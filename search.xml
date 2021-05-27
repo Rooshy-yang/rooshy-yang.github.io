@@ -1,74 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search>
-  <entry>
-    <title>Teach Me How to hexo</title>
-    <url>/2021/05/17/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>JavaNote</title>
-    <url>/2021/05/20/JavaNote/</url>
-    <content><![CDATA[<p>Q: </p>
-<ol>
-<li>this 的用法</li>
-<li>抛出异常 throw.</li>
-<li>Queue<Integer>     q = new LinkedList&lt;&gt;();</li>
-<li>New 和没有new 的区别是什么</li>
-</ol>
-<p><strong>技术：</strong></p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//Array.fill()方法：对一个数组进行填充:</span></span><br><span class="line"><span class="keyword">boolean</span>[] vis = <span class="keyword">new</span> <span class="keyword">boolean</span>[N * N + <span class="number">1</span>]; </span><br><span class="line">Arrays.fill(vis, <span class="keyword">false</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//public String trim()用于删除头尾空白符的字符串:</span></span><br><span class="line">String Str = <span class="keyword">new</span> String(<span class="string">&quot;    yrs    &quot;</span>);</span><br><span class="line">Str.trim();</span><br><span class="line"></span><br><span class="line"><span class="comment">//input : 	yrs		</span></span><br><span class="line"><span class="comment">//output : yrs </span></span><br><span class="line"></span><br><span class="line"><span class="comment">//直接抛出异常～</span></span><br><span class="line"><span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">&quot;implement me!&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Math 数学处理库，其中有abs,atan,PI...</span></span><br><span class="line"><span class="keyword">import</span> java.lang.Math;</span><br><span class="line">Math.abs();</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>线性表list<a href="https://www.w3cschool.cn/java/java-list.html">see</a> :注意一下NullPointerException，不能</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> List&lt;Double&gt; <span class="title">calculateBearings</span><span class="params">(List&lt;Integer&gt; xCoords, List&lt;Integer&gt; yCoords)</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	  List&lt;Double&gt; ans = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>屏幕的打印和输和print 的区别</strong><a href="(https://blog.csdn.net/baidu_41666198/article/details/79942661)">see</a> </p>
-<p>打印数组：<a href="https://blog.csdn.net/lilong117194/article/details/83716244">打印二维数组</a></p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">String[] l = <span class="keyword">new</span> String[N];</span><br><span class="line">System.out.println(Arrays.toString(l));</span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//不能使用：不同于C. java判断temp&lt;0之后还是会执行appear[temp].</span></span><br><span class="line">temp &lt; <span class="number">0</span> &amp;&amp; appear[temp] </span><br></pre></td></tr></table></figure>
-
-
-
-<p><strong>概念：</strong></p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// Java 中一般使用 new 来创建对象，它可以动态地为一个对象分配地址。它的通用格式如下：</span></span><br><span class="line">classname obj = <span class="keyword">new</span> classname( );</span><br><span class="line"><span class="comment">//其中，obj 是创建的对象，classname 是类的名字，类名后边的( )指明了类的构造方法。</span></span><br><span class="line"><span class="comment">//构造方法定义了当创建一个对象时要进行的操作。</span></span><br><span class="line"><span class="comment">//e.g 类名称 对象名称 = new 类名称 () ; </span></span><br><span class="line">String b = <span class="keyword">new</span> String(<span class="string">&quot;word&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//一个.java中一般是可以放多个类的，但是只能有一个用public修饰的类，</span></span><br><span class="line"><span class="comment">//并且public 修饰的class 的名字需要和java文件的名字相同（区分大小写）</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>参考书籍：java核心技术.</p>
-<p><strong>public 和 static:</strong></p>
-<p>​    通常，大多数方法都是public的,私有(private)方法只能被同一类中的其它方法调用。</p>
-<p>用static关键字修饰的字段称为静态字段 n 静态字段对类的每个实例都是共享的</p>
-<p>可以用final关键字修饰一个实例字段，这种字段在构造对象时必须初始化<br>n 用final修饰的实例字段将不能再修改</p>
-<p><strong>什么是Junit</strong></p>
-<hr>
-<p>JUnit is a simple framework to write repeatable tests. It is an instance of the xUnit architecture for unit testing frameworks.</p>
-<hr>
-<p>eclipse 配置Junit <a href="https://blog.csdn.net/gzn00417/article/details/104163696">see</a>.</p>
-<p>Set继承于Collection接口，是一个不允许出现重复元素，并且无序的集合，主要有HashSet和TreeSet两大实现类。</p>
-<p><strong>Set</strong> <a href="https://www.jianshu.com/p/b48c47a42916">Java集合–Set(基础)</a></p>
-<p>Set继承于Collection接口，是一个不允许出现重复元素，并且无序的集合，主要有HashSet和TreeSet两大实现类。</p>
-<p>在判断重复元素的时候，Set集合会调用hashCode()和equal()方法来实现。</p>
-<p>HashSet是哈希表结构，主要利用HashMap的key来存储元素，计算插入元素的hashCode来获取元素在集合中的位置；</p>
-<p>TreeSet是红黑树结构，每一个元素都是树中的一个节点，插入的元素都会进行排序；</p>
-<p><a href="https://blog.csdn.net/coding_1994/article/details/80553554">HashSet和TreeSet的区别_</a> </p>
-<p><a href="https://blog.csdn.net/the_fool_/article/details/82389351">Set排序四种写法</a></p>
-<p><strong>Other refference:</strong></p>
-<p>凸包问题： 给定平面上一堆点集，输出位于凸包上的点。</p>
-<p>gift-wrapping algorithm.</p>
-<p>Graham_Scan algorithm.</p>
-]]></content>
-  </entry>
+<search> 
+  
+  
+    
+    <entry>
+      <title>JavaNote</title>
+      <link href="2021/05/20/JavaNote/"/>
+      <url>2021/05/20/JavaNote/</url>
+      
+        <content type="html"><![CDATA[<p>Q: </p><ol><li><p>this 的用法</p></li><li><p>抛出异常 throw.</p></li><li><p>Queue<Integer>     q = new LinkedList&lt;&gt;();</p></li><li><p>New 和没有new 的区别是什么</p></li><li><p>multatble </p></li><li><p>learning how to write spec</p></li><li><p>搞清楚什么时候用lists, maps,queues,sets.</p></li></ol><p><strong>技术：</strong></p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Array.fill()方法：对一个数组进行填充:</span></span><br><span class="line"><span class="keyword">boolean</span>[] vis = <span class="keyword">new</span> <span class="keyword">boolean</span>[N * N + <span class="number">1</span>]; </span><br><span class="line">Arrays.fill(vis, <span class="keyword">false</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//public String trim()用于删除头尾空白符的字符串:</span></span><br><span class="line">String Str = <span class="keyword">new</span> String(<span class="string">&quot;    yrs    &quot;</span>);</span><br><span class="line">Str.trim();</span><br><span class="line"></span><br><span class="line"><span class="comment">//input : yrs</span></span><br><span class="line"><span class="comment">//output : yrs </span></span><br><span class="line"></span><br><span class="line"><span class="comment">//直接抛出异常～</span></span><br><span class="line"><span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">&quot;implement me!&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Math 数学处理库，其中有abs,atan,PI...</span></span><br><span class="line"><span class="keyword">import</span> java.lang.Math;</span><br><span class="line">Math.abs();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure><p>线性表list<a href="https://www.w3cschool.cn/java/java-list.html">see</a> :注意一下NullPointerException，不能</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> List&lt;Double&gt; <span class="title">calculateBearings</span><span class="params">(List&lt;Integer&gt; xCoords, List&lt;Integer&gt; yCoords)</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  List&lt;Double&gt; ans = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><strong>屏幕的打印和输和print 的区别</strong><a href="(https://blog.csdn.net/baidu_41666198/article/details/79942661)">see</a> </p><p>Map 的用法<a href="https://www.runoob.com/java/java-map-interface.html">see</a></p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Map m = <span class="keyword">new</span> HashMap();</span><br></pre></td></tr></table></figure><p>打印数组：<a href="https://blog.csdn.net/lilong117194/article/details/83716244">打印二维数组</a></p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String[] l = <span class="keyword">new</span> String[N];</span><br><span class="line">System.out.println(Arrays.toString(l));</span><br></pre></td></tr></table></figure><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//不能使用：不同于C. java判断temp&lt;0之后还是会执行appear[temp].</span></span><br><span class="line">temp &lt; <span class="number">0</span> &amp;&amp; appear[temp] </span><br></pre></td></tr></table></figure><p><strong>概念：</strong></p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// Java 中一般使用 new 来创建对象，它可以动态地为一个对象分配地址。它的通用格式如下：</span></span><br><span class="line">classname obj = <span class="keyword">new</span> classname( );</span><br><span class="line"><span class="comment">//其中，obj 是创建的对象，classname 是类的名字，类名后边的( )指明了类的构造方法。</span></span><br><span class="line"><span class="comment">//构造方法定义了当创建一个对象时要进行的操作。</span></span><br><span class="line"><span class="comment">//e.g 类名称 对象名称 = new 类名称 () ; </span></span><br><span class="line">String b = <span class="keyword">new</span> String(<span class="string">&quot;word&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//一个.java中一般是可以放多个类的，但是只能有一个用public修饰的类，</span></span><br><span class="line"><span class="comment">//并且public 修饰的class 的名字需要和java文件的名字相同（区分大小写）</span></span><br><span class="line"></span><br></pre></td></tr></table></figure><p>参考书籍：java核心技术.</p><p><strong>public 和 static:</strong></p><p>​    通常，大多数方法都是public的,私有(private)方法只能被同一类中的其它方法调用。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//public 可以被外部用户访问：</span></span><br><span class="line"><span class="keyword">int</span> i = a.i;</span><br></pre></td></tr></table></figure><p>用static关键字修饰的字段称为静态字段 n 静态字段对类的每个实例都是共享的</p><p>可以用final关键字修饰一个实例字段，这种字段在构造对象时必须初始化<br>n 用final修饰的实例字段将不能再修改</p><p>对于static方法来说，static方法可以被类名对象进行调用，也可以在类中被其他方法调用。而非static方法只能先创建对象之后才能被对象调用。</p><p><strong>Java接口</strong>:</p><p><strong>什么是Junit</strong></p><hr><p>JUnit is a simple framework to write repeatable tests. It is an instance of the xUnit architecture for unit testing frameworks.</p><hr><p>eclipse 配置Junit <a href="https://blog.csdn.net/gzn00417/article/details/104163696">see</a>.</p><p>Set继承于Collection接口，是一个不允许出现重复元素，并且无序的集合，主要有HashSet和TreeSet两大实现类。</p><p><strong>Set</strong> <a href="https://www.jianshu.com/p/b48c47a42916">Java集合–Set(基础)</a></p><p>Set继承于Collection接口，是一个不允许出现重复元素，并且无序的集合，主要有HashSet和TreeSet两大实现类。</p><p>在判断重复元素的时候，Set集合会调用hashCode()和equal()方法来实现。</p><p>HashSet是哈希表结构，主要利用HashMap的key来存储元素，计算插入元素的hashCode来获取元素在集合中的位置；</p><p>TreeSet是红黑树结构，每一个元素都是树中的一个节点，插入的元素都会进行排序；</p><p><a href="https://blog.csdn.net/coding_1994/article/details/80553554">HashSet和TreeSet的区别_</a> </p><p><a href="https://blog.csdn.net/the_fool_/article/details/82389351">Set排序四种写法</a></p><hr><p>A <strong>concrete class</strong> is a class that has an implementation for all of its methods. They cannot have any unimplemented methods. It can also extend an <a href="https://www.geeksforgeeks.org/abstract-classes-in-java/">abstract class</a> or implement an <a href="https://www.geeksforgeeks.org/interfaces-in-java/">interface</a> as long as it implements all their methods. It is a complete class and can be instantiated.</p><hr><p><strong>new</strong>的含义和不同对象之间的比较问题:<a href="http://c.biancheng.net/view/6016.html">see</a>，同时涉及到multable与immultable.</p><p><strong>Other refference:</strong></p><p>1.凸包问题： 给定平面上一堆点集，输出位于凸包上的点。</p><p>gift-wrapping algorithm.</p><p>Graham_Scan algorithm.</p><p>2.</p><hr><p>eclipse创建多工程的时候出现<a href="https://blog.csdn.net/jishu_vip/article/details/2617188?utm_medium=distribute.pc_relevant_t0.none-task-blog-2~default~BlogCommendFromMachineLearnPai2~default-1.control&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2~default~BlogCommendFromMachineLearnPai2~default-1.control">The input type of the launch configuration does not exist</a></p><p>两种类 ，</p><p>Graph&lt;String&gt; s tring范型.</p><p>代码覆盖度。AF RI</p><p>表暴露</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Java </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Teach Me How to hexo</title>
+      <link href="2021/05/17/hello-world/"/>
+      <url>2021/05/17/hello-world/</url>
+      
+        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+  
+  
 </search>
