@@ -39,7 +39,7 @@
 
 <p><strong>屏幕的打印和输和print 的区别</strong><a href="(https://blog.csdn.net/baidu_41666198/article/details/79942661)">see</a> </p>
 <p>正则表达式的使用:</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">String R = <span class="string">&quot;([1-9]+(|\\.5)|(0\\.5))&quot;</span>;</span><br><span class="line">String I1 = <span class="string">&quot;1.5&quot;</span>;</span><br><span class="line">String I2 = <span class="string">&quot;0.5&quot;</span>;</span><br><span class="line">String I3 = <span class="string">&quot;1.52&quot;</span>;</span><br><span class="line">String I4 = <span class="string">&quot;1&quot;</span>;</span><br><span class="line">String I5 = <span class="string">&quot;.5&quot;</span>;</span><br><span class="line">String I6 = <span class="string">&quot;9.5&quot;</span>;</span><br><span class="line">String I7 = <span class="string">&quot;123.5&quot;</span>;</span><br><span class="line"></span><br><span class="line">System.out.println(Pattern.matches(R,I1));<span class="comment">//T</span></span><br><span class="line">System.out.println(Pattern.matches(R,I2));<span class="comment">//T</span></span><br><span class="line">System.out.println(Pattern.matches(R,I3));<span class="comment">//F</span></span><br><span class="line">System.out.println(Pattern.matches(R,I4));<span class="comment">//T</span></span><br><span class="line">System.out.println(Pattern.matches(R,I5));<span class="comment">//F</span></span><br><span class="line">System.out.println(Pattern.matches(R,I6));<span class="comment">//T</span></span><br><span class="line">System.out.println(Pattern.matches(R,I7));<span class="comment">//T</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">		String R = <span class="string">&quot;([1-9]+(|\\.5)|(0\\.5))&quot;</span>;</span><br><span class="line">		String I1 = <span class="string">&quot;1.5&quot;</span>;</span><br><span class="line">		String I2 = <span class="string">&quot;0.5&quot;</span>;</span><br><span class="line">		String I3 = <span class="string">&quot;1.52&quot;</span>;</span><br><span class="line">		String I4 = <span class="string">&quot;1&quot;</span>;</span><br><span class="line">		String I5 = <span class="string">&quot;.5&quot;</span>;</span><br><span class="line">		String I6 = <span class="string">&quot;9.5&quot;</span>;</span><br><span class="line">		String I7 = <span class="string">&quot;123.5&quot;</span>;</span><br><span class="line">		</span><br><span class="line"><span class="comment">//		System.out.println(&quot;String&quot;.matches(rel)); well done</span></span><br><span class="line">		System.out.println(Pattern.matches(R,I1));<span class="comment">//T</span></span><br><span class="line">		System.out.println(Pattern.matches(R,I2));<span class="comment">//T</span></span><br><span class="line">		System.out.println(Pattern.matches(R,I3));<span class="comment">//F</span></span><br><span class="line">		System.out.println(Pattern.matches(R,I4));<span class="comment">//T</span></span><br><span class="line">		System.out.println(Pattern.matches(R,I5));<span class="comment">//F</span></span><br><span class="line">		System.out.println(Pattern.matches(R,I6));<span class="comment">//T</span></span><br><span class="line">		System.out.println(Pattern.matches(R,I7));<span class="comment">//T</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//	A ::= </span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Note String.split() 应该处理正则表达式的特殊字符，比如：</span></span><br><span class="line"><span class="comment">// right :</span></span><br><span class="line">String[] names = value.split(<span class="string">&quot;//.&quot;</span>);</span><br><span class="line"><span class="comment">// error :</span></span><br><span class="line">String[] names = value.split(<span class="string">&quot;.&quot;</span>);</span><br></pre></td></tr></table></figure>
 
 
 
@@ -62,7 +62,13 @@
 
 <p><strong>抽象类</strong><a href="https://www.runoob.com/java/java-abstraction.html">see</a> ： </p>
 <p>​        其中有一个：构造方法，类方法（用 static 修饰的方法）不能声明为抽象方法。</p>
-<p>一个类只能继承一个抽象类，而一个类却可以实现多个接口。</p>
+<p>一个类只能继承一个抽象类，而一个类却可以实现多个接口:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">ManWorker implements Workable, Feedable&#123;</span><br><span class="line">      <span class="function"><span class="keyword">void</span> <span class="title">work</span><span class="params">()</span> </span>&#123;...&#125;;</span><br><span class="line">      <span class="function"><span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span> </span>&#123;...&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
 <p>使用范型来支持不同类型的参数： Java的泛型是由编译器在编译时实行的，编译器内部永远把所有类型<code>T</code>视为<code>Object</code>处理，但是Obeject不能持有基本类型。</p>
 <p><strong>public 和 static:</strong></p>
 <p>​    通常，大多数方法都是public的,私有(private)方法只能被同一类中的其它方法调用。</p>
@@ -119,9 +125,9 @@
 <p><strong>Cartographer.</strong></p>
 <p>算法理解:如图所示，可以看到cartographer 主要分为两大部分，一个是用来建立一系列子图(submap)的Local SlAM，算法接受到由传感器从环境中获取的数据，经过Voxel Filter，Voxel Filter的功能是将原始点降采样为恒定大小的多维数据集并且仅保留每个多维数据集的质心进行（用以解决距离数据密度不均匀的问题）, 而Adaptive Voxel Filter顾名思义用来自适应Voxel Filter相关配置（例如voxel_filter_size），处理后的数据组合完毕并从多个范围数据中过滤掉后，就进入Local SLAM。Local SLAM通过使用PoseExtrapolator的初始猜测进行匹配，将新的数据插入其当前子图结构中。PoseExtrapolator背后的想法是使用测距仪之外的其他传感器的传感器数据来预测下一次扫描应插入到子图中的位置，并且，通过调用</p>
 <p>Ceres Solver将寻找最佳匹配位置问题转化成最小二乘问题进行优化，得到一个更匹配的子图。同时在Global SIAM中，它通过对子图进行扫描匹配扫描查找循环闭合约束。当Local SLAM生成其连续的子图时，对子图数据集的全局优化任务在后台运行。它的作用是在彼此之间重新布置子图，以便它们形成一个连贯的全局图。例如，此优化负责更改当前构建的轨迹，以根据循环闭合正确地对齐子图。整个算法过程大致如上。</p>
-<p><img src="/Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image001.png" alt="img"></p>
+<p><img src="Cartographer/clip_image001.png" alt="img"></p>
 <p>由各部分执行的功能和参数含义可知，我们通过调整TRAJECTORY_BUILDER_nD.max_range（25～30）来增加传感器传入的数据量，因为在Input Sensor Data中Cartographer通过bandpass filter，将数据的范围值保持在一定的最小和最大范围之间，同时对TRAJECTORY_BUILDER_nD.*adaptive_voxel_filter.max_length和TRAJECTORY_BUILDER_nD.*adaptive_voxel_filter.min_num_points也进行调整以适应传感器的值（前者3～4之间，后者150左右效果更好），对Local SLAM可接收的数据范围也要进行调整（例如TRAJECTORY_BUILDER_nD.submaps.num_range_data）。在LocalSLAM的建图过程中（通过预先将Global SLAM的优化关闭，POSE_GRAPH.optimize_every_n_nodes = 0），发现图中的旋转效果并不佳，因此，在CeresScanMatcher的优化过程中，增大TRAJECTORY_BUILDER_nD.ceres_scan_matcher.rotation_weight对优化此效果颇佳。</p>
-<p><img src="/Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/image-20210608222319213.png" alt="image-20210608222319213"></p>
+<p><img src="Cartographer/image-20210608222319213.png" alt="image-20210608222319213"></p>
 ]]></content>
   </entry>
 </search>
