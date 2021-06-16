@@ -17,7 +17,7 @@
 
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 <h3 id="Address-some-problem"><a href="#Address-some-problem" class="headerlink" title="Address some problem"></a>Address some problem</h3><p>安装plugin需要在~下安装，例如：(base) yrs@rongshuijiebadeMacBook-Pro ~ % npm install hexo-renderer-marked/</p>
-]]></content>
+<h3 id="Insert-pictures-into-posts"><a href="#Insert-pictures-into-posts" class="headerlink" title="Insert pictures into posts."></a>Insert pictures into posts.</h3>]]></content>
   </entry>
   <entry>
     <title>JavaNote</title>
