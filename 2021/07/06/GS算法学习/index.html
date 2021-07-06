@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="keywords" content="" />
+  <meta name="author" content="Yangrushuai" />
+  <meta name="description" content="" />
+  
+  
+  <title>
+    
+      GS算法学习 
+      
+      
+      |
+    
+     Hexo
+  </title>
+
+  
+    <link rel="apple-touch-icon" href="/images/favicon.png">
+    <link rel="icon" href="/images/favicon.png">
+  
+
+  <!-- Raleway-Font -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+
+  <!-- hexo site css -->
+  
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/iconfont/iconfont.css">
+<link rel="stylesheet" href="/css/github-markdown.css">
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+  <!-- jquery3.3.1 -->
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+  <!-- fancybox -->
+  <link href="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.css" rel="stylesheet">
+  <script async src="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+  
+<script src="/js/fancybox.js"></script>
+
+
+  
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y1C36FG5TY"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-Y1C36FG5TY');
+    </script>
+  
+
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+
+  <body>
+    <div id="app">
+      <div class="header">
+  <div class="avatar">
+    <a href="/">
+      <!-- 头像取消懒加载，添加no-lazy -->
+      
+        <img src="/images/avatar.png" alt="">
+      
+    </a>
+    <div class="nickname"><a href="/">Rooshy Yang</a></div>
+  </div>
+  <div class="navbar">
+    <ul>
+      
+        <li class="nav-item" data-path="/">
+          <a href="/">Home</a>
+        </li>
+      
+        <li class="nav-item" data-path="/archives/">
+          <a href="/archives/">Archives</a>
+        </li>
+      
+        <li class="nav-item" data-path="/tags/">
+          <a href="/tags/">tags</a>
+        </li>
+      
+        <li class="nav-item" data-path="/friends/">
+          <a href="/friends/">Friends</a>
+        </li>
+      
+        <li class="nav-item" data-path="/about/">
+          <a href="/about/">About</a>
+        </li>
+      
+    </ul>
+  </div>
+</div>
+
+
+<script src="/js/activeNav.js"></script>
+
+
+
+      <div class="flex-container">
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
+
+<!-- LaTex Display -->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  }
+};
+</script>
+
+
+
+  
+
+  
+
+  
+
+  
+  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
+  <div class="container post-details" id="post-details">
+    <div class="post-content">
+      <div class="post-title">GS算法学习</div>
+      <div class="post-attach">
+        <span class="post-pubtime">
+          <i class="iconfont icon-updatetime" title="Update time"></i>
+          2021-07-06 20:17:18
+        </span>
+        
+      </div>
+      <div class="markdown-body">
+        <h1 id="College-Admissions-and-the-Stability-of-Marriage"><a href="#College-Admissions-and-the-Stability-of-Marriage" class="headerlink" title="College Admissions and the Stability of Marriage"></a>College Admissions and the Stability of Marriage</h1><p><strong>摘要</strong></p>
+<p>本文从一个寻找大学录取的方案的问题出发，通过定义稳定性和最优性的原则和对实际问题的抽象等等引导我们找到一种独特的最佳匹配方法，最后对整个文章的论述方法进行了思考和总结。本文参考并总结了D.Gale和L.S.Shapley的经典文章《College Admissions and the Stability of Marriage》并对相关的内容和证明进行了个人解读和补充，在此基础上通过构造例子的方法帮助读者更好地理解本文所阐述的概念和相关证明。</p>
+<p><strong>引言</strong></p>
+<p>考虑一个典型环境下的一现实问题： 一所大学收到了N个人的申请，但这所大学只有Q个录取名额。招生办需要在评估过申请者之后决定录取哪些人。对大学来说比较理想的选法采用只录取最佳的Q位申请者的录取策略，但在现实中，考虑到申请方可能会同时申请不止一所大学且他们对自己投标的大学有一定的优先级，所以不是所有被这所大学录取的人都会接受录取。</p>
+<p><em>例一对招不满的原因进行举例：</em></p>
+<p><strong>例子一</strong>：如果一个申请人<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image002-5573600.png?lastModify=1625573877" alt="img">认为<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image004-5573600.png?lastModify=1625573877" alt="img">大学&gt;<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image006-5573600.png?lastModify=1625573877" alt="img">大学&gt;<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image008-5573600.png?lastModify=1625573877" alt="img">大学，在<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image010-5573600.png?lastModify=1625573877" alt="img">大学都愿意录取<img src="/.com//../../Typora%E5%9B%BE%E7%89%87/clip_image002-5573923.png" alt="img">的情况下![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image002.png?lastModify=1625573877)就会拒绝<img src="/.com//../../Typora%E5%9B%BE%E7%89%87/clip_image008-5573923.png" alt="img">而接受<img src="/.com//../../Typora%E5%9B%BE%E7%89%87/clip_image006-5573923.png" alt="img">，那么![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image008.png?lastModify=1625573877)大学就会因为先前已经拒绝了<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image017-5573600.png?lastModify=1625573877" alt="img">之外的申请人后，又因为![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image002.png?lastModify=1625573877)的退出，导致![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image008.png?lastModify=1625573877)大学招不满。</p>
+<p>所以这种选法是不够令人满意的，因为一所大学很可能会招不满。因此，为了能招到q位申请者，大学通常会录取多于q个人。</p>
+<p>进一步的问题在于应该决定录取多少人、哪些人可以被录取，一定程度上要靠推断来解决。我们不知道某个申请者是否申请了其他学校；即使知道这一点，我们也不知道这些学校在他心中的排名；即便这也知道，我们也不知道哪些其他学校会录取他。所有这些不确定性导致的结果是，学校仅仅只能期望入学人数接近预期录取人数，且学生质量经可能达到最优。</p>
+<p>这个问题同时也困扰着申请人。对申请人来说，被要求在申请表中列出所有其他按优先顺序申请的大学的申请人可能会感觉到，或许由于某些原因，如果告诉大学这是他的第三选择，将降低他被这所大学录取的几率。</p>
+<p>一种优化方案是引入”备选名单”。这样可以告诉暂未被录取的申请人，虽然他目前没有被这所大学录取，但如果这所大学空出了多余的名额，那么他可能会在之后被录取。但这里引入了新的问题。假设一名申请者被一所大学录取，且同时处于另一所他更喜欢的大学的”等待名单”中。那么他应该保险起见选择前者，还是冒险看看后者之后会不会录取他？如果申请人选择了前者但不通知后者，如果后者在之后若要录取他时，就退掉前者的录取选择后者，这种行为是否有违道德？</p>
+<p>如果我们提出一种分配申请者进入大学的程序，这个程序能够满足双方的不同需求，它消除了所有不确定性，在假定有足够的申请者的情况下，将每所大学的配额都能分配给每个合适的申请人。那么我们认为可以避免上述描述的困难。</p>
+<p><strong>分配标准</strong></p>
+<p>在<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image021-5573600.png?lastModify=1625573877" alt="img">所大学之间分配<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image023-5573600.png?lastModify=1625573877" alt="img">个申请者，其中<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image025-5573600.png?lastModify=1625573877" alt="img">是第<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image027-5573600.png?lastModify=1625573877" alt="img">所大学的配额。每个申请者都按照自己的喜好对大学进行排名，只忽略那些在任何情况下都不愿接受的大学。为方便起见，我们假定任意申请者对自己心仪的大学排名必须有先后（理论上说每一个人最终只能选择唯一一所大学），所以，如果申请人认为两所或多所大学之间没有差别，那么申请人仍然被要求以某种顺序列出他们。每所大学都按照优先顺序对申请该大学的学生进行排名，首先是将那些无论如何都不会录取的申请人淘汰（即使没能录满），因此我们希望从每个大学的录取限额、双方给彼此的排名的数据中，决定一个申请方案以符合某种普遍认同的公平标准。</p>
+<p>  有一种方法可能看起来非常显然，即根据所给的偏好数据进行枚举直到选出符合条件的匹配方式。</p>
+<p><em>例子二具体展示枚举法的过程：</em></p>
+<p><strong>例子二</strong>：假设有申请方<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image029-5573600.png?lastModify=1625573877" alt="img">，大学<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image031-5573600.png?lastModify=1625573877" alt="img">各招一人。申请方的排名：<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image033-5573600.png?lastModify=1625573877" alt="img">，招生办的排名：<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image035-5573600.png?lastModify=1625573877" alt="img">。让<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image037-5573600.png?lastModify=1625573877" alt="img">可满足所有双方的偏好。</p>
+<p>但这种匹配方式会存在一个问题，即可能存在任何分配方式都不能满足双方所有偏好的情况</p>
+<p><em>例子三、四展示了枚举法不能满足所有偏好的问题：</em></p>
+<p><strong>例子三</strong>：假设有申请方<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image039-5573600.png?lastModify=1625573877" alt="img">，大学<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image031-5573600.png?lastModify=1625573877" alt="img">各招一人。申请方的排名：<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image042-5573600.png?lastModify=1625573877" alt="img">，但如果招生办的排名：<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image044-5573600.png?lastModify=1625573877" alt="img">故存在两种匹配方式：<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image046-5573600.png?lastModify=1625573877" alt="img">，前者无法满足招生办的偏好，后者无法满足申请方的偏好。</p>
+<p><strong>例子四</strong>：假设有申请方<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image048-5573600.png?lastModify=1625573877" alt="img">，大学<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image031-5573600.png?lastModify=1625573877" alt="img">各招两人。申请方的排名：<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image051-5573600.png?lastModify=1625573877" alt="img">，招生办的偏好排名：<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image053-5573600.png?lastModify=1625573877" alt="img">显然无论那种匹配方式（<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image055.png?lastModify=1625573877" alt="img">），都没有办法满足双方全部的偏好。</p>
+<p>如果必须决定如何处理例一这种情况。根据大学是为学生而存在而不是相反的哲学理念，将![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image002.png?lastModify=1625573877)分配给<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image004-5573600.png?lastModify=1625573877" alt="img">并将<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image059.png?lastModify=1625573877" alt="img">分配给<img src="/.com//../../Typora%E5%9B%BE%E7%89%87/clip_image006-5573923.png" alt="img">而不是后一种方法或许是合适的，例二同理。这表明了以下公认但模糊的原则：在其他条件相等的情况下，大学应该向申请人妥协。虽然这句话本身并没有多大帮助，但是我们将在处理另一个更明确的问题之后再进行讨论。</p>
+<p>  我们希望以下定义中描述的情况在我们选择的匹配中不会发生：</p>
+<p>  <strong>定义</strong>：如果分别有两个申请人<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image062.png?lastModify=1625573877" alt="img">和<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image064.png?lastModify=1625573877" alt="img">分别被分配给大学<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image066.png?lastModify=1625573877" alt="img">和<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image068.png?lastModify=1625573877" alt="img">，，但<img src="/.com//../../Typora%E5%9B%BE%E7%89%87/clip_image064-5573923.png" alt="img">比去大学<img src="/.com//../../Typora%E5%9B%BE%E7%89%87/clip_image006-5573923.png" alt="img">更想去大学<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image072.png?lastModify=1625573877" alt="img">比喜欢<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image074-5573600.png?lastModify=1625573877" alt="img">更喜欢<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image076.png?lastModify=1625573877" alt="img">，这样的匹配方式被认为是<strong>不稳定*<em><strong>的</strong>(unstable)<em>，</em>反之则被认为是</em>*稳定的</strong>(stable)。</p>
+<p><em>“An assignment of applicants to colleges will be called unstable if there are two applicants</em> <img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image074-5573600.png?lastModify=1625573877" alt="img"><em>and</em> <img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image076.png?lastModify=1625573877" alt="img"> <em>who are assigned to colleges A and B, respectively, although</em> <img src="/.com//../../Typora%E5%9B%BE%E7%89%87/clip_image076-5573923.png" alt="img"><em>prefers A to B and A prefers B to</em> <img src="/.com//../../Typora%E5%9B%BE%E7%89%87/clip_image074-5573923.png" alt="img">.“</p>
+<p><em>例五、例六为理解这个定义的举例：</em></p>
+<p>**例子五:**为方便起见，我们观察例子二中<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image082.png?lastModify=1625573877" alt="img">的分配方案，根据稳定方案的定义，![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image002.png?lastModify=1625573877)相比去<img src="/.com//../../Typora%E5%9B%BE%E7%89%87/clip_image006-5573923.png" alt="img">更想去<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image004-5573600.png?lastModify=1625573877" alt="img"><em>，</em>而<img src="/.com//../../Typora%E5%9B%BE%E7%89%87/clip_image004-5573923.png" alt="img">相比录y更想录![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image002.png?lastModify=1625573877)，所以这种方案是不稳定的。</p>
+<p><strong>例子六</strong>：存在申请方<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image089.png?lastModify=1625573877" alt="img">，大学<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image091.png?lastModify=1625573877" alt="img">各招一人，申请方：<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image093.png?lastModify=1625573877" alt="img">,而招生办的偏好排名：<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image095.png?lastModify=1625573877" alt="img">,这种情况下有<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image097.png?lastModify=1625573877" alt="img">种方案，根据稳定性的定义，<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image099.png?lastModify=1625573877" alt="img"> 是一种稳定的方案，而<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image101.png?lastModify=1625573877" alt="img">是一种不稳定方案，因为<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image103.png?lastModify=1625573877" alt="img">想去<img src="/.com//../../Typora%E5%9B%BE%E7%89%87/clip_image004-5573923.png" alt="img">大于<img src="/.com//../../Typora%E5%9B%BE%E7%89%87/clip_image006-5573923.png" alt="img">，而![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image004.png?lastModify=1625573877)更喜欢<img src="/.com//../../Typora%E5%9B%BE%E7%89%87/clip_image103-5573923.png" alt="img">。</p>
+<p>假设上述情况的确存在，申请者<img src="/.com//../../Typora%E5%9B%BE%E7%89%87/clip_image076-5573923.png" alt="img">将会告诉![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image004.png?lastModify=1625573877)学校让![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image004.png?lastModify=1625573877)学校会选择录取![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image076.png?lastModify=1625573877) ，撵走<img src="/.com//../../Typora%E5%9B%BE%E7%89%87/clip_image074-5573923.png" alt="img">以保持录取名额不变。 ![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image004.png?lastModify=1625573877)和![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image076.png?lastModify=1625573877)都会觉得这种改变是一种提升。在这个意义上，若原本的分配方案是“不稳定的”，学校和申请者会以一种对双方都有利的方式抛弃这个方案（注：即使是这样也不一定一步得到稳定方案）。</p>
+<p>  以后分析可知，我们对一项匹配方案的第一个要求是它不会表现出不稳定性。但立即出现另一个数学上的问题：是否总是可以找到这样的匹配？下一部分将给出对该问题的肯定答案，尽管证明并不困难，但正如一些例子所示，虽然结果似乎并不十分明显。</p>
+<p>  假设目前确实存在稳定的匹配，我们仍然必须确定在许多稳定解决方案中（可能不止一种方案），哪一个是首选。现在，我们回到前面提到的申请人利益大于学校的哲学原则，给出在稳定的解决方案中选出一个最佳方案的精确表述：</p>
+<p><strong>定义</strong>：如果每个申请人去的大学都至少比其他稳定方案下去的大学更心仪,那么该稳定方案被认为是<strong>最佳的</strong>，称该方案为<strong>最佳匹配方案</strong>。</p>
+<p><em>“A stable assignment is called optimal if every applicant is at least as well off under it as under any other stable assignment.”</em></p>
+<p>​    </p>
+<p><em>例七、例八为理解这个定义的举例</em>：</p>
+<p>  <strong>例子七：</strong>例子二中只存在唯一一种稳定方案（即<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image116.png?lastModify=1625573877" alt="img">）,该方案也是最佳的。</p>
+<p>  <strong>例子八</strong>：不难验证，例子六中存在三种稳定方案：1.<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image118.png?lastModify=1625573877" alt="img">、<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image120.png?lastModify=1625573877" alt="img">、<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image122.png?lastModify=1625573877" alt="img">。由于1中的<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image124.png?lastModify=1625573877" alt="img">都分别录取到了自己的第一选择，在方案二和三中<img src="/.com//../../Typora%E5%9B%BE%E7%89%87/clip_image124-5573923.png" alt="img">都只能选择第二志愿和第三志愿的配偶，所以1相对于2、3而言每个申请人至少比其他稳定方案下的情况要好，1是最佳匹配方案。</p>
+<p>即使保证了稳定匹配方案的存在，但最佳分配是否存在还是无法判断的。但是，很明显的一件事是：</p>
+<p><strong>定理一:最佳匹配方案（如果存在）是唯一的</strong>。</p>
+<p><em>“**if</em> <em>optimal</em> <em>assignment</em> <em>exists,</em> <em>it</em> <em>is unique*</em>.”*</p>
+<p>反证法证明：如果同时存在两个以上的最佳分配方案，由于每一种最佳匹配方案不完全相同，所以至少存在一个申请人在其中的两个方案中所在学校不同，设这两所不同的学校为<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image031-5573600.png?lastModify=1625573877" alt="img">，由于存在申请人对大学的排名偏好，那么一定存在以下情况之一：<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image128.png?lastModify=1625573877" alt="img">或<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image130.png?lastModify=1625573877" alt="img">，无论是哪一种情况都会存在一种方案比另一种方案要好的情况，与最佳匹配方案定义矛盾，结论得证。</p>
+<p>因此，一个分配毕竟不是最佳的。解决存在的问题后，稳定性和最优性原则将引导我们找到独特的最佳分配方法。</p>
+<p><strong>稳定申请与婚姻问题</strong></p>
+<p>尝试去解决我们之前提出的稳定申请问题之前，先来考虑另一种特殊情况，即大学申请的人数和学校的人数一样的情况，虽然有点不自然，但考虑另一种相对比较恰当的情景：</p>
+<p>在某一社区中有<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image023-5573600.png?lastModify=1625573877" alt="img">个男士和<img src="/.com//../../Typora%E5%9B%BE%E7%89%87/clip_image023-5573923.png" alt="img">个女士，每一个人都是根据他/她对婚姻对象的偏好来对每一个异性进行排名。现在我们需要一个令人满意的方案将这个社区中的![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image023.png?lastModify=1625573877)个男士和![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image023.png?lastModify=1625573877)个女士互相配对，根据先前不稳定匹配方案的定义，称为<strong>一组不稳定婚姻的匹配方案</strong>（上述概念明显适用），如果在这个方案下有一个男孩和一个女孩不是彼此结婚，而是彼此相对自身的实际伴侣而言更喜欢彼此。</p>
+<p><strong>问题一</strong>：任意一种偏好排名都可以找到一组稳定匹配方案吗？</p>
+<p><strong>例子九</strong>：图一为一个“排名矩阵”，有三个男孩<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image136.png?lastModify=1625573877" alt="img">和三个女孩<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image138.png?lastModify=1625573877" alt="img"> </p>
+<p><img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image139.png?lastModify=1625573877" alt="A close up of a clock  Description automatically generated"></p>
+<p>矩阵中每对的第一个数字给出了男孩对女孩的排名，第二个数字是女孩对男孩中的排名。因此，对于<img src="/.com//../../Typora%E5%9B%BE%E7%89%87/clip_image074-5573923.png" alt="img">来说，<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image142.png?lastModify=1625573877" alt="img">，而对于![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image004.png?lastModify=1625573877)而言，<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image145.png?lastModify=1625573877" alt="img">，依此类推。有六对可能的婚姻（<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image097.png?lastModify=1625573877" alt="img">）；其中有如下三个方案是稳定的：一是通过给每个人自己的第一选择来实现的，即<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image148.png?lastModify=1625573877" alt="img">。请注意，这种情况每个女孩都配对自己最低排名的男孩，但方案对男孩来说仍然稳定。另一种方案是让女性优先选择自己最佳的排名，即：<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image150.png?lastModify=1625573877" alt="img">,第三种方案是让每个人都和第二选择匹配，即<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image152.png?lastModify=1625573877" alt="img">。其他情况易证不是稳定的匹配方案，例如：<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image154.png?lastModify=1625573877" alt="img">，因为![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image076.png?lastModify=1625573877)想去<img src="/.com//../../Typora%E5%9B%BE%E7%89%87/clip_image006-5573923.png" alt="img">大于想去![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image004.png?lastModify=1625573877)，而![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image004.png?lastModify=1625573877)相对![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image074.png?lastModify=1625573877)来说更喜欢![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image076.png?lastModify=1625573877),所以不是稳定方案。</p>
+<p><strong>例子十：</strong>图二为排名矩阵，四个男孩<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image162.png?lastModify=1625573877" alt="img">，四个女孩A,B,C,D .</p>
+<p><img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image163.png?lastModify=1625573877" alt="A drawing of a person  Description automatically generated"></p>
+<p><strong>图二</strong></p>
+<p>矩阵中带圆圈的条目表示唯一的一组稳定的方案。请注意，在这种情况下，要实现稳定性，任何人都无法获得他或她的第一选择。</p>
+<p>与婚姻问题类似的一个问题是室友的问题。男孩们希望分成成对的一对室友。如果在其下没有两个男孩，则一对配对被认为是<strong>稳定的</strong>。不是室友的两位男孩，彼此都比真正的室友更喜欢彼此。一个简单的例子表明，在某些情况下可能没有稳定的配对，即考虑男孩![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image074.png?lastModify=1625573877)，![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image076.png?lastModify=1625573877)，<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image167.png?lastModify=1625573877" alt="img">和<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image169.png?lastModify=1625573877" alt="img">，其中![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image074.png?lastModify=1625573877)排![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image076.png?lastModify=1625573877)第一， ![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image076.png?lastModify=1625573877)将<img src="/.com//../../Typora%E5%9B%BE%E7%89%87/clip_image167-5573923.png" alt="img">排第一，![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image167.png?lastModify=1625573877)将![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image074.png?lastModify=1625573877)排第一，而![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image074.png?lastModify=1625573877)，![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image076.png?lastModify=1625573877)，![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image167.png?lastModify=1625573877)则全部排<img src="/.com//../../Typora%E5%9B%BE%E7%89%87/clip_image169-5573923.png" alt="img">在“最后”，然后不管![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image169.png?lastModify=1625573877)的偏好如何，都无法稳定配对，因为与![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image169.png?lastModify=1625573877)一起住的人无论他是谁都想搬出去，而另外两个人的其中一个都愿意接受他。</p>
+<p><strong>例子十一：</strong><img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image183.png?lastModify=1625573877" alt="img">比喜欢<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image185.png?lastModify=1625573877" alt="img">更喜欢![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image076.png?lastModify=1625573877)，![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image076.png?lastModify=1625573877)喜欢<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image062.png?lastModify=1625573877" alt="img">更喜欢<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image190.png?lastModify=1625573877" alt="img">。</p>
+<p><strong>定理二</strong>：婚姻问题中，一定存在稳定的婚姻匹配方案</p>
+<p><em>“There always exists a stable set of marriages.”</em></p>
+<p>证明：我们将通过给出实际找到稳定方案的迭代过程来证明该方案的存在。首先，让每个男孩向他最喜欢的女孩求婚。每个收到多个求婚新的女孩都会留下求婚者中最心仪的一位男孩（根据偏好排名），拒绝掉其他的男孩。但是她还不接受他，而是让他处于候选名单中，给予更好的男孩求婚的机会。现在我们准备第二阶段。那些被拒绝的男孩现在向了他们的第二选择求婚。每个收到求婚的女孩都会从新求婚者和名单中的男孩（如果有）中选择自己最喜欢的一个，然后拒绝掉所有其余的男孩，因而再次保留了最爱。我们以相同的方式进行迭代。那些在第二阶段被拒绝的人会求助于他们的下一个选择，而女孩们再次拒绝了他们迄今为止所拥有的最好的建议。</p>
+<p>实际上，最多<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image192.png?lastModify=1625573877" alt="img">轮求婚回合（结论附方案的存在性），每个女孩最终都会得到一个男孩，因为男孩和女孩的数目一样(实际上可以不一样，后面会讨论)，由<strong>抽屉原理</strong>可知，只要存在一个女孩没有被求婚，那么必存在两个男孩或两个以上的男孩在追求同一个女孩，根据规则必有男孩会被这个女孩拒绝，进而有引发新一轮的求婚，由于男孩们不可以多次对同一个女孩求婚，所以每个女孩一定会在适当的时候收到某个男孩的求婚。最后一个女孩得到她的“如意郎君”之后，求婚游戏结束，每个女孩子都需要接受在他们清单上的男孩。</p>
+<p>我们断言<strong>这种延迟接受**</strong>(<em><strong><strong>deferred acceptance</strong></strong></em>)**<strong>的选法是稳定的</strong>。</p>
+<p>反证法证明：假设存在两个男孩和一个女孩分别是约翰和玛丽，约翰没有和玛丽结婚，但约翰比喜欢自己的妻子来说更喜欢玛丽。然后，约翰一定在某个回合向玛丽求婚了，且被玛丽拒绝了才有可能出现和实际配偶结婚的情况，现在很明显，玛丽必须比约翰更喜欢她的丈夫，因为玛丽不会去选择比不喜欢约翰更不喜欢的人。</p>
+<p><em>例子十二演示延迟接受法的具体过程：</em></p>
+<p><strong>例子十二：</strong>用上述方法找出图三的一个稳定方案：</p>
+<p><img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image193.png?lastModify=1625573877" alt="A picture containing clock  Description automatically generated"></p>
+<p><strong>图三</strong></p>
+<p><strong>第一轮</strong>：<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image195.png?lastModify=1625573877" alt="img">根据第一志愿对配偶进行求婚，由图可知，<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image197.png?lastModify=1625573877" alt="img">然后![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image004.png?lastModify=1625573877)会将![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image076.png?lastModify=1625573877)拒绝（因为<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image201.png?lastModify=1625573877" alt="img">更喜欢![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image074.png?lastModify=1625573877)，下面同理）,把![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image074.png?lastModify=1625573877)放到候选名单中，<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image010-5573600.png?lastModify=1625573877" alt="img">分别把<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image206.png?lastModify=1625573877" alt="img">放到候选名单中；<strong>第二轮</strong>：被拒绝的![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image076.png?lastModify=1625573877)向第二志愿的<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image209.png?lastModify=1625573877" alt="img">求婚，<img src="/.com//../../Typora%E5%9B%BE%E7%89%87/clip_image006-5573923.png" alt="img">拒绝![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image167.png?lastModify=1625573877)而把![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image076.png?lastModify=1625573877)放入候选名单，其他人保持不变;<strong>第三轮</strong>：被拒绝的![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image167.png?lastModify=1625573877)向第二志愿![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image008.png?lastModify=1625573877)求婚，C会拒绝![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image169.png?lastModify=1625573877)而把![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image167.png?lastModify=1625573877)放到候选名单中，其他人保持不变；<strong>第四轮</strong>：被拒绝的![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image167.png?lastModify=1625573877)向第二志愿<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image219.png?lastModify=1625573877" alt="img">求婚，![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image004.png?lastModify=1625573877) 会拒绝掉![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image074.png?lastModify=1625573877)而把![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image169.png?lastModify=1625573877)放到候选名单中，其他人保持不变；<strong>第五轮</strong>：被拒绝的![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image074.png?lastModify=1625573877)向第三志愿![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image008.png?lastModify=1625573877)进行求婚，![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image008.png?lastModify=1625573877)会拒绝![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image167.png?lastModify=1625573877)而把![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image074.png?lastModify=1625573877)放到候选名单中，其他人保持不变；<strong>第六轮</strong>：被拒绝的![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image167.png?lastModify=1625573877)向第三志愿A求婚，![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image004.png?lastModify=1625573877)会拒绝![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image169.png?lastModify=1625573877)而把![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image167.png?lastModify=1625573877)放到候选名单中，其他人保持不变；<strong>第七轮</strong>：被拒绝的![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image169.png?lastModify=1625573877)向第三志愿![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image006.png?lastModify=1625573877)求婚，![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image006.png?lastModify=1625573877)会拒绝![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image076.png?lastModify=1625573877)而把![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image169.png?lastModify=1625573877)放到候选名单；<strong>第八轮</strong>：被拒绝的![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image076.png?lastModify=1625573877)向第三志愿C求婚,![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image076.png?lastModify=1625573877)会再次被拒绝，<strong>第九轮</strong>：![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image076.png?lastModify=1625573877)向最后志愿<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image241.png?lastModify=1625573877" alt="img">求婚，<img src="/.com//../../Typora%E5%9B%BE%E7%89%87/clip_image241-5573923.png" alt="img">由于没有被求婚过所以把![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image076.png?lastModify=1625573877)放到候选名单中。<strong>第十轮</strong>：![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image004.png?lastModify=1625573877)选择![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image167.png?lastModify=1625573877)，![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image006.png?lastModify=1625573877)选择![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image169.png?lastModify=1625573877)，![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image008.png?lastModify=1625573877)选择![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image074.png?lastModify=1625573877)，![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image241.png?lastModify=1625573877)选择![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image076.png?lastModify=1625573877)。匹配结束。</p>
+<p>男孩和女孩人数相同的条件不是必须的。如果有<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image253.png?lastModify=1625573877" alt="img">个男孩和<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image255.png?lastModify=1625573877" alt="img">个女孩，当<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image257.png?lastModify=1625573877" alt="img">时，只要<img src="/.com//../../Typora%E5%9B%BE%E7%89%87/clip_image253-5573923.png" alt="img">个女孩都被求过婚，那么过程结束。当<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image260.png?lastModify=1625573877" alt="img">时，当每个男孩都落在某个女孩候选名单上或被所有女孩拒绝时，该过程结束。无论哪种情况，最终形成的婚姻都是稳定的，证明方法同上。</p>
+<p>而显然，这是完全对称的程序，如果女孩向男孩求婚，男孩使用候选名单，这也必定导致稳定的婚姻。两种解决方案通常不完全相同（如例子八）；确实，我们稍后会看到，当男孩求婚时，延迟接受对于男孩来说是最佳的，而当女孩求婚时，延迟接受对于女孩来说是最佳的。当且仅当存在唯一稳定的婚姻匹配方案时，这两个过程的解决方案才是相同的。</p>
+<p><strong>录取问题下的延迟接受方案</strong></p>
+<p>将上述延迟接受的选法扩展到大学录取问题是同理的。为方便起见，我们将假承认第二节所述的情况：如果大学在任何情况下都不愿意接受学生，则该学生甚至不能被允许申请该大学（注：如同男孩不能同时向一个女孩求婚两次）。有了这样的理解，程序就可以遵循以下步骤：首先，所有学生都应选择他们的第一志愿。然后，配额为<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image262.png?lastModify=1625573877" alt="img">的大学将其排名最高的![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image262.png?lastModify=1625573877)个申请人（如果少于![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image262.png?lastModify=1625573877)则为录取所有申请者）放在其候选名单中，并拒绝多余的申请人。被拒绝的申请者然后申请第二志愿，每所大学再次从新申请者和其候补名单中选择排名最高的![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image262.png?lastModify=1625573877)个申请人，将其放入新的候补名单，然后拒绝其余的。当每个申请人都在等待名单上或被他想要得到认可的所有大学统统拒绝时，该程序即告终止。此时每所大学允许在等待名单上的![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image262.png?lastModify=1625573877)个人录取，并且稳定的分配已经完成。分配稳定的证明与婚姻问题的证明完全相似，![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image262.png?lastModify=1625573877)和<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image269.png?lastModify=1625573877" alt="img">的大小不影响方案的稳定性。</p>
+<p><strong>最佳性*****(*<em><strong><strong>Optimality*</strong></strong></em>)*</strong></p>
+<p>我们下面将说明延迟接受方案不仅对申请人来说是稳定的，也是最佳的。</p>
+<p><strong>定理三</strong>：每个申请人在延期接受方案下至少比在其他稳定方案要好。</p>
+<p><em>“Every applicant is at least as well of under the assignment given by the deferred acceptance procedure as he would be under any other stable assignment.”</em></p>
+<p>注：如果存在一个稳定的分配方案，把某位申请者分配给了某所大学，则称这所大学对于这位申请者来说是<strong>可能的**</strong>(<em><strong><strong>possible</strong></strong></em>)<strong>。要想证明每一个申请人在延期接受的方案下至少比其他稳定方案要好，那只需证明这个延期接受方案下，每一个申请人都不会被</strong>可能的<strong>学校拒绝。因为如果这个延期接受方案下存在一个申请人被</strong>可能的**学校拒绝，那么让这个申请人被可能的学校录取就会让这个申请人变得更好。</p>
+<p>证明：采用归纳法。当没有求婚时，显然没有人被拒绝。假设在某一时刻，还没有申请者被他“可能的”学校拒绝。如果这个时候，已经招满了申请者 <img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image271.png?lastModify=1625573877" alt="img">的大学![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image004.png?lastModify=1625573877)拒绝了申请者![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image074.png?lastModify=1625573877)，那么我们要说明，大学![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image004.png?lastModify=1625573877)对于申请者![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image074.png?lastModify=1625573877)来说是<strong>不可能</strong>的。由于除去那些拒绝了他的学校之外，大学<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image277.png?lastModify=1625573877" alt="img">最喜欢的学校。因此根据假设，这些拒绝他的学校对<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image279.png?lastModify=1625573877" alt="img">来说是不可能的。假设有一个方案，把![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image074.png?lastModify=1625573877)分配给![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image004.png?lastModify=1625573877)。那么在这个方案中，至少有一位申请者<img src="/.com//../../Typora%E5%9B%BE%E7%89%87/clip_image279-5573923.png" alt="img">被分配给了对![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image279.png?lastModify=1625573877)来说比![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image004.png?lastModify=1625573877)更不喜欢的学校。但这样，方案就不稳定了，因为![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image279.png?lastModify=1625573877)与![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image004.png?lastModify=1625573877)彼此都更想选择对方。因此这个方案不稳定，从而说明![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image004.png?lastModify=1625573877)对![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image074.png?lastModify=1625573877)来说不可能。所以此时，仍然没有申请者被他“可能的”学校拒绝，归纳法成立。这样就归纳得出，我们的方案中，大学只拒绝了那些在任何稳定方案中都不可能的学生。因此结果是最优的。</p>
+<p>附带地讲，我们可能会说，即使我们不再具有婚姻问题的对称性，我们仍然可以颠倒录取程序以获得唯一的“大学最佳分配。颠倒的方法与兄弟会有些相似；首先是每所大学向其认为最可取的那些申请人以名额，直至达到名额上限，然后学生留下最有吸引力的报价，拒绝剩下的邀请，同理依此类推。</p>
+<p>到目前为止一直关注我们的读者无疑会注意到我们讨论中的某种趋势。在做出必要的特殊假设来从数学上分析我们的问题时，我们必须抛开原来的大学录取问题，和最终的婚姻问题，我们放弃现实，进入一个可信的**(make-believe)**数学世界。务实的读者可能会问这样是否对实际解决原始问题做出了任何贡献。即使是对此问题的粗略回答，也需要涉及非数学问题，在数学杂志中不讨论这种非数学的问题。但是，我们认为，此处介绍的某些思想可能会有用地应用于大学申请问题的某些阶段。</p>
+<p><strong>总结</strong></p>
+<p>最后，我们提请注意前述分析的数学老师可能会感兴趣的另一个方面。这是事实，我们的结果为非数学人士认为数学与之有关的某些刻板印象提供了一个方便的反例。大多数数学家一次或一次发现自己很容易反驳他们是“装数字的大脑”或“知道很多数学公式”。 在这种情况下，可能需要手头上的插图来表明数学不必与数字或几何图形有关。为此，我们建议对定理1进行陈述和证明并不用数学符号表示，而是用口语来表示、没有模糊或专业术语、没有微积分知识。可能只需要知道如何计数；任何数学家都会立即认出该论点是数学的，而人们没有经过数学训练的人可能会很难理解论点，尽管这不是对主题不熟悉的一个原因，然而，任何数学家都能立刻认识到数学化的论证过程，而没有受过数学训练的人将可能发现自己难以跟上论述的步调，尽管这并不是因为不熟悉讨论的主题</p>
+<p>那么，又要提出这个古老问题的是什么数学呢？答案似乎是，任何以足够精确进行的论证都是数学，而您和我们的朋友们无法理解数学的原因不是因为他们没有装数字的脑袋，而是因为他们无法没有论述的顺序渐进所需的专注度。对于从事数学教学的人来说，这种观察几乎不是什么新闻，但是，该专业人士可能不那么容易接受这种观察。上面的内容或许对他们有一些帮助。</p>
+<p>  注：具有<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image192.png?lastModify=1625573877" alt="img">轮求婚回合的方案：先让<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image291.png?lastModify=1625573877" alt="img">个男孩子分别向![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image291.png?lastModify=1625573877)个女孩子求婚，然后剩下的那个男孩子轮流和![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image291.png?lastModify=1625573877)个女孩子求婚,让他被拒绝<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image295.png?lastModify=1625573877" alt="img">次，最后一次让他求婚成功，结果是另外一个男孩子被甩，然后再让被甩的男孩子轮流被这![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image291.png?lastModify=1625573877)个女孩子拒绝<img src="/.com//../../Typora%E5%9B%BE%E7%89%87/clip_image295-5573923.png" alt="img">次，最后一次让他成功….依次循环直到前面的![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image291.png?lastModify=1625573877)个的男孩子都被拒绝n-2次，然后最后一次有一个男孩子被原来![img](file:////Users/yrs/Library/Group Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image291.png?lastModify=1625573877)个女孩子拒绝后和从没被求婚过的女孩子在一起，每次当所有的男生都求完婚时，算一个轮次，所以这个方案构造出的被拒绝的次数（除最后一次）和轮次数一样：所以结果是<img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image301.png?lastModify=1625573877" alt="img"> = <img src="file:///Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/clip_image303.png?lastModify=1625573877" alt="img">次。</p>
+<p><strong>参考文献</strong></p>
+<p>[1] D.Gale、L.S.Shapley 《College Admissions and the Stability of Marriage》[M] 1962,9-15</p>
+
+      </div>
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+              <a href="/2021/06/27/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>Prev</span>
+              </a>
+            
+          </div>
+          <div class="post-attach">
+            <span class="post-pubtime">
+              <i class="iconfont icon-updatetime" title="Update time"></i>
+              2021-07-06 20:17:18
+            </span>
+            
+          </div>
+          <div class="post-foot-prev">
+            
+          </div>
+        </div>
+      
+    </div>
+    
+  <div id="btn-catalog" class="btn-catalog">
+    <i class="iconfont icon-catalog"></i>
+  </div>
+  <div class="post-catalog hidden" id="catalog">
+    <div class="title">Contents</div>
+    <div class="catalog-content">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#College-Admissions-and-the-Stability-of-Marriage"><span class="toc-text">College Admissions and the Stability of Marriage</span></a></li></ol>
+    </div>
+  </div>
+
+  
+<script src="/js/catalog.js"></script>
+
+
+
+
+    
+      <div class="comments-container">
+        
+
+
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+
+  <div id="vcomments"></div>
+
+  <script>
+    new Valine({
+      el: '#vcomments',
+      appId: 'x0W2lArVWLEo7eOSXuEbEdSp-gzGzoHsz',
+      appKey: 'uyvD42y66uiuqrEqYN1gJMnb',
+      placeholder: 'Welcome!',
+      avatar: 'retro',
+      lang: 'zh-Hans'
+    })
+  </script>
+
+
+
+
+      </div>
+    
+  </div>
+
+
+        <div class="footer">
+  <div class="social">
+    <ul>
+      
+        <li>
+          <a title="github" target="_blank" rel="noopener" href="https://github.com/Rooshy-yang">
+            <i class="iconfont icon-github"></i>
+          </a>
+        </li>
+      
+        <li>
+          <a title="email" href="">
+            <i class="iconfont icon-envelope"></i>
+          </a>
+        </li>
+      
+        <li>
+          <a title="facebook" href="">
+            <i class="iconfont icon-facebooksquare"></i>
+          </a>
+        </li>
+      
+        <li>
+          <a title="twitter" href="">
+            <i class="iconfont icon-twitter"></i>
+          </a>
+        </li>
+      
+        <li>
+          <a title="wechat" href="">
+            <i class="iconfont icon-wechat"></i>
+          </a>
+        </li>
+      
+        <li>
+          <a title="weibo" href="">
+            <i class="iconfont icon-weibo"></i>
+          </a>
+        </li>
+      
+        <li>
+          <a title="rss" href="/atom.xml">
+            <i class="iconfont icon-rss"></i>
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+  
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Copyright © Oranges 2021</a>
+        
+    </div>
+  
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Theme by Oranges | Powered by Hexo</a>
+        
+    </div>
+  
+</div>
+
+      </div>
+
+      <div class="back-to-top hidden">
+  <a href="javascript: void(0)">
+    <i class="iconfont icon-chevronup"></i>
+  </a>
+</div>
+
+
+<script src="/js/backtotop.js"></script>
+
+
+
+      
+  <div class="search-icon" id="search-icon">
+    <a href="javascript: void(0)">
+      <i class="iconfont icon-search"></i>
+    </a>
+  </div>
+
+  <div class="search-overlay hidden">
+    <div class="search-content" tabindex="0">
+      <div class="search-title">
+        <span class="search-icon-input">
+          <a href="javascript: void(0)">
+            <i class="iconfont icon-search"></i>
+          </a>
+        </span>
+        
+          <input type="text" class="search-input" id="search-input" placeholder="搜索..">
+        
+        <span class="search-close-icon" id="search-close-icon">
+          <a href="javascript: void(0)">
+            <i class="iconfont icon-close"></i>
+          </a>
+        </span>
+      </div>
+      <div class="search-result" id="search-result"></div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var inputArea = document.querySelector("#search-input")
+    var searchOverlayArea = document.querySelector(".search-overlay")
+
+    inputArea.onclick = function() {
+      getSearchFile()
+      this.onclick = null
+    }
+
+    inputArea.onkeydown = function() {
+      if(event.keyCode == 13)
+        return false
+    }
+
+    function openOrHideSearchContent() {
+      let isHidden = searchOverlayArea.classList.contains('hidden')
+      if (isHidden) {
+        searchOverlayArea.classList.remove('hidden')
+        document.body.classList.add('hidden')
+        // inputArea.focus()
+      } else {
+        searchOverlayArea.classList.add('hidden')
+        document.body.classList.remove('hidden')
+      }
+    }
+
+    function blurSearchContent(e) {
+      if (e.target === searchOverlayArea) {
+        openOrHideSearchContent()
+      }
+    }
+
+    document.querySelector("#search-icon").addEventListener("click", openOrHideSearchContent, false)
+    document.querySelector("#search-close-icon").addEventListener("click", openOrHideSearchContent, false)
+    searchOverlayArea.addEventListener("click", blurSearchContent, false)
+
+    var searchFunc = function (path, search_id, content_id) {
+      'use strict';
+      var $input = document.getElementById(search_id);
+      var $resultContent = document.getElementById(content_id);
+      $resultContent.innerHTML = "<ul><span class='local-search-empty'>First search, index file loading, please wait...<span></ul>";
+      $.ajax({
+        // 0x01. load xml file
+        url: path,
+        dataType: "xml",
+        success: function (xmlResponse) {
+          // 0x02. parse xml file
+          var datas = $("entry", xmlResponse).map(function () {
+            return {
+              title: $("title", this).text(),
+              content: $("content", this).text(),
+              url: $("url", this).text()
+            };
+          }).get();
+          $resultContent.innerHTML = "";
+
+          $input.addEventListener('input', function () {
+            // 0x03. parse query to keywords list
+            var str = '<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length <= 0) {
+              return;
+            }
+            // 0x04. perform local searching
+            datas.forEach(function (data) {
+              var isMatch = true;
+              var content_index = [];
+              if (!data.title || data.title.trim() === '') {
+                data.title = "Untitled";
+              }
+              var orig_data_title = data.title.trim();
+              var data_title = orig_data_title.toLowerCase();
+              var orig_data_content = data.content.trim().replace(/<[^>]+>/g, "");
+              var data_content = orig_data_content.toLowerCase();
+              var data_url = data.url;
+              var index_title = -1;
+              var index_content = -1;
+              var first_occur = -1;
+              // only match artiles with not empty contents
+              if (data_content !== '') {
+                keywords.forEach(function (keyword, i) {
+                  index_title = data_title.indexOf(keyword);
+                  index_content = data_content.indexOf(keyword);
+
+                  if (index_title < 0 && index_content < 0) {
+                    isMatch = false;
+                  } else {
+                    if (index_content < 0) {
+                      index_content = 0;
+                    }
+                    if (i == 0) {
+                      first_occur = index_content;
+                    }
+                    // content_index.push({index_content:index_content, keyword_len:keyword_len});
+                  }
+                });
+              } else {
+                isMatch = false;
+              }
+              // 0x05. show search results
+              if (isMatch) {
+                str += "<li><a href='" + data_url + "' class='search-result-title'>" + orig_data_title + "</a>";
+                var content = orig_data_content;
+                if (first_occur >= 0) {
+                  // cut out 100 characters
+                  var start = first_occur - 20;
+                  var end = first_occur + 80;
+
+                  if (start < 0) {
+                    start = 0;
+                  }
+
+                  if (start == 0) {
+                    end = 100;
+                  }
+
+                  if (end > content.length) {
+                    end = content.length;
+                  }
+
+                  var match_content = content.substr(start, end);
+
+                  // highlight all keywords
+                  keywords.forEach(function (keyword) {
+                    var regS = new RegExp(keyword, "gi");
+                    match_content = match_content.replace(regS, "<span class=\"search-keyword\">" + keyword + "</span>");
+                  });
+
+                  str += "<p class=\"search-result-abstract\">" + match_content + "...</p>"
+                }
+                str += "</li>";
+              }
+            });
+            str += "</ul>";
+            if (str.indexOf('<li>') === -1) {
+              return $resultContent.innerHTML = "<ul><span class='local-search-empty'>No result<span></ul>";
+            }
+            $resultContent.innerHTML = str;
+          });
+        },
+        error: function(xhr, status, error) {
+          $resultContent.innerHTML = ""
+          if (xhr.status === 404) {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The search.xml file was not found, please refer to：<a href='https://github.com/zchengsite/hexo-theme-oranges#configuration' target='_black'>configuration</a><span></ul>";
+          } else {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The request failed, Try to refresh the page or try again later.<span></ul>";
+          }
+        }
+      });
+      $(document).on('click', '#search-close-icon', function() {
+        $('#search-input').val('');
+        $('#search-result').html('');
+      });
+    }
+
+    var getSearchFile = function() {
+        var path = "/search.xml";
+        searchFunc(path, 'search-input', 'search-result');
+    }
+  </script>
+
+
+
+
+    </div>
+  </body>
+</html>
