@@ -126,7 +126,7 @@
 <h3 id="Insert-pictures-into-posts"><a href="#Insert-pictures-into-posts" class="headerlink" title="Insert pictures into posts."></a>Insert pictures into posts.</h3>]]></content>
   </entry>
   <entry>
-    <title>Cartographer学习笔记</title>
+    <title>Cartographer(Java)</title>
     <url>/2021/05/30/Cartographer/</url>
     <content><![CDATA[<p>大二下刚开学和shl一起参加了航天创意物流比赛，刚开始想着两个人去试试水，随便玩一下，后来开学没多久，因为一起参加比赛的另一支队伍缺员，于是两队考虑合并，至此之后就开始有点团队合作来学习了。整个比赛分为好几个部分，我主要负责一些路径规划的东西，因为大二上的时候学过数据结构，做的比较快就开始做SLAM建图，第一次阅读工程代码，同时阅读英文技术文档，说实话还是挺有意思的，最近比较忙，分享一下我没整理的学习笔记。</p>
 <p><strong>Cartographer.</strong></p>
