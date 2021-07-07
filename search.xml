@@ -570,7 +570,7 @@
   </entry>
   <entry>
     <title>软件构造笔记</title>
-    <url>/2021/07/07/%E8%BD%AF%E4%BB%B6%E6%9E%84%E9%80%A0%E7%AC%94%E8%AE%B0/</url>
+    <url>/2021/06/25/%E8%BD%AF%E4%BB%B6%E6%9E%84%E9%80%A0%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<p>首先：<strong>内存忽略，死锁不考。题型是选择，大题。</strong></p>
 <h5 id="Ch1"><a href="#Ch1" class="headerlink" title="Ch1:"></a>Ch1:</h5><p>必考表格.</p>
 <p>质量目标及折中时可能会产生的冲突. </p>
@@ -746,7 +746,7 @@
   </entry>
   <entry>
     <title>关于Override和Overload的问题</title>
-    <url>/2021/07/07/%E5%85%B3%E4%BA%8EOverride%E5%92%8COverload%E7%9A%84%E9%97%AE%E9%A2%98/</url>
+    <url>/2021/06/04/%E5%85%B3%E4%BA%8EOverride%E5%92%8COverload%E7%9A%84%E9%97%AE%E9%A2%98/</url>
     <content><![CDATA[<p>Overload指的是重载，它的要求是名字一样，但是参数一定不能一样,返回值可以不一样,具体调用哪一个重载方法在编译阶段的时候决定，编译会对参数类型进行检查，属于静态类型检查。</p>
 <p>Override指的是重写，重写是在运行阶段进行检查，具体对象生成是在运行阶段完成的。因此： 重载看引用类型，重写看具体对象，</p>
 <p>例如Animal 是dog 的父类， Animal a  = new dog() ,新建（new）一个Dog对象，定义一个Animal的引用a，用来指向Animal的子类对象dog，a的方法引用会作为一个列表来扫描，如果存在这个方法则在dog中调用相应的方法。</p>
