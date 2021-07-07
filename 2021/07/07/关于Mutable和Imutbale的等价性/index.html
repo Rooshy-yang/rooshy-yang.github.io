@@ -11,7 +11,7 @@
   
   <title>
     
-      Tag 
+      关于Mutable和Imutbale的等价性 
       
       
       |
@@ -123,21 +123,105 @@ MathJax = {
 </script>
 
 
-  <!-- 标签页 url形式：https://yoursite/tags/ -->
-  <div class="container tag-index">
-    <div>
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/csapp/" rel="tag">csapp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a><span class="tag-list-count">2</span></li></ul>
+
+  
+
+  
+
+  
+
+  
+  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
+  <div class="container post-details" id="post-details">
+    <div class="post-content">
+      <div class="post-title">关于Mutable和Imutbale的等价性</div>
+      <div class="post-attach">
+        <span class="post-pubtime">
+          <i class="iconfont icon-updatetime" title="Update time"></i>
+          2021-07-07 21:57:30
+        </span>
+        
+              <span class="post-tags">
+                <i class="iconfont icon-tags" title="Tags"></i>
+                
+                <span class="span--tag">
+                  <a href="/tags/java/" title="java">
+                    <b>#</b> java
+                  </a>
+                </span>
+                
+              </span>
+          
+      </div>
+      <div class="markdown-body">
+        <p>对于Imutable类型的变量，它的观察等价性和行为等价性等价，而值得注意的是讨论等价性的时候考虑的是A空间而不是B空间，所以Imutable类型的变量是可以改变内部属性的值的，只要保证AF不变，有益的可变性是允许的。</p>
+<p>但很经常容易搞混的一点就是Mutable类型的等价性，它分为观察等价性和行为等价性。观察等价性是指若使用Observer类型的方法来查看两个对象的值是一样的，那么可以判断是等价的对象。行为等价性是指使用对象的任意方法都能够保证对象的值相同，那么则认为两个对象等价。因此对于Mutable对象而言，行为等价性常常意味着两个对象指向的是同一个地址。而观察等价性它的限制则更加宽松一些。</p>
+<p>注意：不同的Mutable类有不同的等价性标准，StringBuiler类的equals方法继承自Object，属于行为等价性。Collection类中的方法例如LIst，Set和Date遵循的是观察等价性。</p>
+
+      </div>
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+              <a href="/2021/07/07/%E5%85%B3%E4%BA%8EOverride%E5%92%8COverload%E7%9A%84%E9%97%AE%E9%A2%98/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>Prev</span>
+              </a>
+            
+          </div>
+          <div class="post-attach">
+            <span class="post-pubtime">
+              <i class="iconfont icon-updatetime" title="Update time"></i>
+              2021-07-07 21:57:30
+            </span>
+            
+                  <span class="post-tags">
+                    <i class="iconfont icon-tags" title="Tags"></i>
+                    
+                    <span class="span--tag">
+                      <a href="/tags/java/" title="java">
+                        <b>#</b> java
+                      </a>
+                    </span>
+                    
+                  </span>
+              
+          </div>
+          <div class="post-foot-prev">
+            
+          </div>
+        </div>
+      
     </div>
+    
+
+    
+      <div class="comments-container">
+        
+
+
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+
+  <div id="vcomments"></div>
+
+  <script>
+    new Valine({
+      el: '#vcomments',
+      appId: 'x0W2lArVWLEo7eOSXuEbEdSp-gzGzoHsz',
+      appKey: 'uyvD42y66uiuqrEqYN1gJMnb',
+      placeholder: 'Welcome!',
+      avatar: 'retro',
+      lang: 'zh-Hans'
+    })
+  </script>
+
+
+
+
+      </div>
+    
   </div>
-  
 
-  
-
-  
-
-  
-
-  
 
         <div class="footer">
   <div class="social">

@@ -219,9 +219,6 @@ MathJax = {
 <p>接口的方法没完全实现会出问题。</p>
 <p>Q: return new FastMyString(); (FastMyString 是接口的一个具体实现)</p>
 <p>。接口，继承，重写抽象类考题：给一道题分析执行结果。</p>
-<p>。重载的要求是名字可以一样，但是参数一定不能一样,具体调用哪一个重载方法在编译阶段的时候决定，编译会对参数类型进行检查，相反地：重写是在运行阶段进行检查，具体对象生成是在运行阶段完成的。因此： 重载看类型，重写看具体对象，see e.g.</p>
-<p>。 Animal a  = new dog() ,新建（new）一个Dog对象，定义一个Animal的引用，用来指向Animal的子类对象dog，a的方法引用会作为一个列表来扫描，如果存在这个方法则在dog中调用相应的方法。</p>
-<p>@override是为了让编译阶段检查该重写是否合法，参数列表必须相同，返回类型可以不通，但必须是被重写类型方法返回值的子类。@overload</p>
 <p>note : 子类的规约应该比父类的规约更强。</p>
 <p><strong>what does this print : false ;(ch7.p69)</strong>:理由是因为contains的实现是调用了Object 的equals方法，而object 的equals方法判断的是object 的类型。</p>
 <p>instanceof 判断a 是否为该类型或该类型的父类，getClass直接给出a的类型。</p>
@@ -333,6 +330,11 @@ MathJax = {
               
           </div>
           <div class="post-foot-prev">
+            
+              <a href="/2021/07/07/%E5%85%B3%E4%BA%8EOverride%E5%92%8COverload%E7%9A%84%E9%97%AE%E9%A2%98/" target="_self">
+                <span>Next</span>
+                <i class="iconfont icon-chevronright"></i>
+              </a>
             
           </div>
         </div>

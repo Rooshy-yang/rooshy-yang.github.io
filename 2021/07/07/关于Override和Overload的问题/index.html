@@ -11,7 +11,7 @@
   
   <title>
     
-      Tag 
+      关于Override和Overload的问题 
       
       
       |
@@ -123,21 +123,111 @@ MathJax = {
 </script>
 
 
-  <!-- 标签页 url形式：https://yoursite/tags/ -->
-  <div class="container tag-index">
-    <div>
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/csapp/" rel="tag">csapp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a><span class="tag-list-count">2</span></li></ul>
+
+  
+
+  
+
+  
+
+  
+  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
+  <div class="container post-details" id="post-details">
+    <div class="post-content">
+      <div class="post-title">关于Override和Overload的问题</div>
+      <div class="post-attach">
+        <span class="post-pubtime">
+          <i class="iconfont icon-updatetime" title="Update time"></i>
+          2021-07-07 21:53:17
+        </span>
+        
+              <span class="post-tags">
+                <i class="iconfont icon-tags" title="Tags"></i>
+                
+                <span class="span--tag">
+                  <a href="/tags/java/" title="java">
+                    <b>#</b> java
+                  </a>
+                </span>
+                
+              </span>
+          
+      </div>
+      <div class="markdown-body">
+        <p>Overload指的是重载，它的要求是名字一样，但是参数一定不能一样,返回值可以不一样,具体调用哪一个重载方法在编译阶段的时候决定，编译会对参数类型进行检查，属于静态类型检查。</p>
+<p>Override指的是重写，重写是在运行阶段进行检查，具体对象生成是在运行阶段完成的。因此： 重载看引用类型，重写看具体对象，</p>
+<p>例如Animal 是dog 的父类， Animal a  = new dog() ,新建（new）一个Dog对象，定义一个Animal的引用a，用来指向Animal的子类对象dog，a的方法引用会作为一个列表来扫描，如果存在这个方法则在dog中调用相应的方法。</p>
+<p>@override是为了让编译阶段检查该重写是否合法，参数列表必须相同，返回类型可以不通，但必须是被重写类型方法返回值的子类。@overload一方面为了提醒程序猿，另一方面也是能够让编译器检查是否合法重载。</p>
+
+      </div>
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+              <a href="/2021/07/07/%E8%BD%AF%E4%BB%B6%E6%9E%84%E9%80%A0%E7%AC%94%E8%AE%B0/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>Prev</span>
+              </a>
+            
+          </div>
+          <div class="post-attach">
+            <span class="post-pubtime">
+              <i class="iconfont icon-updatetime" title="Update time"></i>
+              2021-07-07 21:53:17
+            </span>
+            
+                  <span class="post-tags">
+                    <i class="iconfont icon-tags" title="Tags"></i>
+                    
+                    <span class="span--tag">
+                      <a href="/tags/java/" title="java">
+                        <b>#</b> java
+                      </a>
+                    </span>
+                    
+                  </span>
+              
+          </div>
+          <div class="post-foot-prev">
+            
+              <a href="/2021/07/07/%E5%85%B3%E4%BA%8EMutable%E5%92%8CImutbale%E7%9A%84%E7%AD%89%E4%BB%B7%E6%80%A7/" target="_self">
+                <span>Next</span>
+                <i class="iconfont icon-chevronright"></i>
+              </a>
+            
+          </div>
+        </div>
+      
     </div>
+    
+
+    
+      <div class="comments-container">
+        
+
+
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+
+  <div id="vcomments"></div>
+
+  <script>
+    new Valine({
+      el: '#vcomments',
+      appId: 'x0W2lArVWLEo7eOSXuEbEdSp-gzGzoHsz',
+      appKey: 'uyvD42y66uiuqrEqYN1gJMnb',
+      placeholder: 'Welcome!',
+      avatar: 'retro',
+      lang: 'zh-Hans'
+    })
+  </script>
+
+
+
+
+      </div>
+    
   </div>
-  
 
-  
-
-  
-
-  
-
-  
 
         <div class="footer">
   <div class="social">
