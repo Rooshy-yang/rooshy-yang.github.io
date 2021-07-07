@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="keywords" content="" />
+  <meta name="author" content="Yangrushuai" />
+  <meta name="description" content="" />
+  
+  
+  <title>
+    
+      软件构造笔记 
+      
+      
+      |
+    
+     Hexo
+  </title>
+
+  
+    <link rel="apple-touch-icon" href="/images/favicon.png">
+    <link rel="icon" href="/images/favicon.png">
+  
+
+  <!-- Raleway-Font -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+
+  <!-- hexo site css -->
+  
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/iconfont/iconfont.css">
+<link rel="stylesheet" href="/css/github-markdown.css">
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+  <!-- jquery3.3.1 -->
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+  <!-- fancybox -->
+  <link href="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.css" rel="stylesheet">
+  <script async src="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+  
+<script src="/js/fancybox.js"></script>
+
+
+  
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y1C36FG5TY"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-Y1C36FG5TY');
+    </script>
+  
+
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+
+  <body>
+    <div id="app">
+      <div class="header">
+  <div class="avatar">
+    <a href="/">
+      <!-- 头像取消懒加载，添加no-lazy -->
+      
+        <img src="/images/avatar.png" alt="">
+      
+    </a>
+    <div class="nickname"><a href="/">Rooshy Yang</a></div>
+  </div>
+  <div class="navbar">
+    <ul>
+      
+        <li class="nav-item" data-path="/">
+          <a href="/">Home</a>
+        </li>
+      
+        <li class="nav-item" data-path="/archives/">
+          <a href="/archives/">Archives</a>
+        </li>
+      
+        <li class="nav-item" data-path="/tags/">
+          <a href="/tags/">tags</a>
+        </li>
+      
+        <li class="nav-item" data-path="/friends/">
+          <a href="/friends/">Friends</a>
+        </li>
+      
+        <li class="nav-item" data-path="/about/">
+          <a href="/about/">About</a>
+        </li>
+      
+    </ul>
+  </div>
+</div>
+
+
+<script src="/js/activeNav.js"></script>
+
+
+
+      <div class="flex-container">
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
+
+<!-- LaTex Display -->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  }
+};
+</script>
+
+
+
+  
+
+  
+
+  
+
+  
+  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
+  <div class="container post-details" id="post-details">
+    <div class="post-content">
+      <div class="post-title">软件构造笔记</div>
+      <div class="post-attach">
+        <span class="post-pubtime">
+          <i class="iconfont icon-updatetime" title="Update time"></i>
+          2021-07-07 12:22:34
+        </span>
+        
+              <span class="post-tags">
+                <i class="iconfont icon-tags" title="Tags"></i>
+                
+                <span class="span--tag">
+                  <a href="/tags/Java/" title="Java">
+                    <b>#</b> Java
+                  </a>
+                </span>
+                
+              </span>
+          
+      </div>
+      <div class="markdown-body">
+        <p><strong>内存忽略，死锁不考。题型是选择，大题。</strong></p>
+<h5 id="Ch1"><a href="#Ch1" class="headerlink" title="Ch1:"></a>Ch1:</h5><p>表格.</p>
+<p>质量目标及折中时可能会产生的冲突. Ch1</p>
+<h5 id="Ch2"><a href="#Ch2" class="headerlink" title="Ch2:"></a>Ch2:</h5><p>测试的概念和分类.</p>
+<p>等价类划分.需要考虑特殊情况(0 和变量边界(如INT_MIN) . Ch2 </p>
+<p>白盒不会考大题:      测试程序内部运转,确保路径能够正确执行到,无法测试程序功能(黑盒可以).考概念:独立/基本路径测试:对于每一个等价类划分都能有正确的路径跳转.</p>
+<h5 id="Ch3"><a href="#Ch3" class="headerlink" title="Ch3:"></a>Ch3:</h5><h5 id="Ch4"><a href="#Ch4" class="headerlink" title="Ch4:"></a>Ch4:</h5><p>1.对象和基本数据类型的特性表格:<img src="/.com//yrs/Documents/Typora%E5%9B%BE%E7%89%87/image-20210517081602167.png" alt="image-20210517081602167"></p>
+<p>2.静态类型检测和动态类型检测</p>
+<p>3.(必考)区别是否mutable, 如果不是就设计一个mutability,  比如给一个类, 修改类的private final ….r</p>
+<p><img src="/.com//yrs/Documents/Typora%E5%9B%BE%E7%89%87/image-20210517085007348.png" alt="image-20210517085007348"></p>
+<p>不允许改变变量的数据类型,直接return变量的引用肯定不是immultable,改变参数的值也一定不是immultatble</p>
+<p>The following things are essential for creating an <strong>immutable</strong> class:</p>
+<p>[Mutable and Immutable in Java - Javatpoint](<a target="_blank" rel="noopener" href="https://www.javatpoint.com/mutable-and-immutable-in-java#:~:text=Mutable">https://www.javatpoint.com/mutable-and-immutable-in-java#:~:text=Mutable</a> and Immutable in Java Java is an,object-based concept is mutable and immutable in Java.)</p>
+<ul>
+<li>Final class, which is declared as final so that it can’t be extended.</li>
+<li>All fields should be private so that direct access to the fields is blocked.</li>
+<li>No Setters，即不能有变值器。</li>
+<li>All mutable fields should be as final so that they can not be iterated once initialized.</li>
+<li></li>
+</ul>
+<p>String类型是immutable的,而StringBuilder类型是mutable的。<strong>基本数据型都是immultable</strong> .</p>
+<img src="/.com//yrs/Documents/Typora图片/image-20210524082727915.png" alt="image-20210524082727915" style="zoom:20%;">
+
+
+
+<p><strong>Snapshort</strong> diagram 单圈和双圈(mul or immul ),单线头和双线头(final or not ).<strong>会考</strong></p>
+<p>Java collections 可以保证list是不可变的,但是这种转换<strong>在动态检测的时候获得的</strong>,在静态检测的时候无法检查得出,因为list.remove被编译器认为合法..</p>
+<p><strong>ch5</strong> </p>
+<p>​    <strong>给定规约(specification),判断规约的强弱</strong>,给操作写规约</p>
+<p>规约的描述可以被静态类型检测,但方法的注释不可以被检测</p>
+<p>规约:功能描述(参数,参数要求) +函数调用 + 告诉对应的输出.不能带有实现细节告诉给客户.</p>
+<p>之前的编程想法要记录,即为设计决策.</p>
+<p>前置条件不满足,后置条件无效.</p>
+<p>对输出参数进行改变的方法(multable)需要在规约中提示,所以尽量不选择.</p>
+<p>规约强弱判断方法：如果前置条件比较更弱（precondition）;后置条件更强;more client can use it;fewer implementations satisfy it .</p>
+<p><strong>ch6:ADT抽象数据型</strong></p>
+<p>给一类，表示会不会出现表示泄漏。</p>
+<p>检查是否有public ，如果有改成private</p>
+<p>给定一个操作，判断是什么类型的方法。种类有：</p>
+<p>1.Creator构造器：给一个对象创建一个新对象。</p>
+<p> Producer : 给一个对象创建一个不同类型的对象：see ch6 P53 即是pro 也是crea</p>
+<p>工厂方法是为了创建一个实例，通常是<strong>静态方法？</strong> :String.ValueOf(object obj);无需创建对象就可以直接通过类名调用。</p>
+<p>Q： Creators 和 producers 的区别.example : SubString(int, int);</p>
+<p>2.表示空间-&gt;抽象空间的映射不一定是双射，但一定是满射，因为客户设计的东西一定在表示空间中有意义，另一方面，表示空间上不同的两个值在客户看来其实是一样的。</p>
+<p>判断一个Map是否满足满射，单射，双射。给定一个RI和AF，判断哪些值是符合的。</p>
+<p><strong>判断哪一个注释是用户/非用户看到的，判断哪一个Rep能够支撑某个函数，判断哪一个是RI的表述。see :ch6 68.</strong>   ： RI，AF, Safety from Rep exposure, Rep invariant 是给程序员看的。ADT的规约是按照Client的要求来进行书写的，规约要根据用户输入的类型和方法使用来进行异常的抛出和值的输出。</p>
+<p>note : 每年都有一个判断改变R值但是不影响用户方面的immutable.</p>
+<p>Presentation Independent  and Presentation Invariant</p>
+<p>3.RI :用于判断某个具体的“表示”是否”合法“的规则。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RI : R -&gt; <span class="keyword">boolean</span> <span class="comment">//RI 数据校验函数。</span></span><br></pre></td></tr></table></figure>
+
+<p>AF : 用于给出抽象空间在表示空间中的表示。</p>
+<p><strong>大题： 类的独立性即：</strong></p>
+<p>不能暴露属性。</p>
+<p>不能return 原引用，因为直接return 是把对象的地址引用给了返回的变量，client 可以直接访问类里面的值。<img src="/.com//yrs/Documents/Typora图片/image-20210524094203899.png" alt="image-20210524094203899" style="zoom:25%;"></p>
+<p>====</p>
+<p>Rep exposure : presents a reason why the code doesn’t expose the rep:</p>
+<img src="/.com//yrs/Documents/Typora图片/image-20210531082604611.png" alt="image-20210531082604611" style="zoom:25%;">  
+
+
+
+<h3 id="ch7-选择题和代码修改题"><a href="#ch7-选择题和代码修改题" class="headerlink" title="ch7 选择题和代码修改题"></a><strong>ch7 选择题和代码修改题</strong></h3><p>JVM无法在编译阶段（整个阶段）都无法识别multable的子类调用multable的接口.</p>
+<p>接口的方法没完全实现会出问题。</p>
+<p>Q: return new FastMyString(); (FastMyString 是接口的一个具体实现)</p>
+<p>。接口，继承，重写抽象类考题：给一道题分析执行结果。</p>
+<p>。重载的要求是名字可以一样，但是参数一定不能一样,具体调用哪一个重载方法在编译阶段的时候决定，编译会对参数类型进行检查，相反地：重写是在运行阶段进行检查，具体对象生成是在运行阶段完成的。因此： 重载看类型，重写看具体对象，see e.g.</p>
+<p>。 Animal a  = new dog() ,新建（new）一个Dog对象，定义一个Animal的引用，用来指向Animal的子类对象dog，a的方法引用会作为一个列表来扫描，如果存在这个方法则在dog中调用相应的方法。</p>
+<p>@override是为了让编译阶段检查该重写是否合法，参数列表必须相同，返回类型可以不通，但必须是被重写类型方法返回值的子类。@overload</p>
+<p>note : 子类的规约应该比父类的规约更强。</p>
+<p><strong>what does this print : false ;(ch7.p69)</strong>:理由是因为contains的实现是调用了Object 的equals方法，而object 的equals方法判断的是object 的类型。</p>
+<p>instanceof 判断a 是否为该类型或该类型的父类，getClass直接给出a的类型。</p>
+<p>带范型的T&lt;&gt;，只要范型不一样，则两者没有直接父子关系。</p>
+<p>hashcode只需要保证每一个key的值不同。</p>
+<p>Q collection,通配符;</p>
+<p>final 只赋值一次。</p>
+<p><strong>ch8</strong></p>
+<p>​    观察者角度看如果两个对象调用<strong>任何</strong>相同的操作都会的得到相同的结果，则可以看作是一样的。行为等价性：做相同的变化也会得到一样的结果。特别地，没有方法的类对所有的对象都等价</p>
+<p>所以考试会考用AF 和给一些方法来让你判断两个新生成的对象是否等价。</p>
+<p>== VS equals :== 是判断是否值相同。 考虑选择不同的对象有不同的hashcode.</p>
+<p>行为等价性  ： multable 来说，要对象一样。 imultable 来说，要值不变。是一整个时间线的不变。</p>
+<p>观察等价性： multablxe observer 得到的值都一样。</p>
+<hr>
+<p>Map&lt;String , Integer &gt;  m = …</p>
+<p>m.put(‘a’, 1 ); 对1 来说会调用一个valueOf来打包一个Integer类型的对象。valueOf会使用常量池技术。</p>
+<hr>
+<p>clone 方法。</p>
+<p><strong>表示泄漏 presentation exposure</strong>. defensive copy。clone 方法是浅拷贝，对象内属性引用的对象只会拷贝引用地址，而不会将引用的对象重新分配内存，相对应的深拷贝则会连引用的对象也重新创建。</p>
+<p><strong>ch9</strong>：</p>
+<p>了解概念</p>
+<p>framework 调用主控端在框架端，Library调用在用户端。</p>
+<p>Q : 擦拭法</p>
+<p><strong>ch10：</strong></p>
+<p>考察：下面那个原则是好的原则.</p>
+<p>Open/close 原则： 复用多的方法建议放在interface中抽象。避免多个ifelseifelse.</p>
+<p>interface</p>
+<p><strong>必考正则表达式</strong>： 复习一下<a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-regular-expressions.html">Java 正则表达式</a> 可能是选择题（唯一）。terminal ::= interminal </p>
+<p>可能会考语法树。</p>
+<p>a ::= word* := [0-9]+</p>
+<p><strong>ch11:</strong></p>
+<p>设计模式 ： 工厂模式，策略模式，修饰器模式。</p>
+<p>委托：动态编译时确定的。</p>
+<p>用继承方法去组合多个功能的子类，会产生很多重复的代码（不同的具体要求类会选取子类来继承）</p>
+<p>Q：适配器</p>
+<p>Q : protected</p>
+<p>Q: 两个修饰器指向需不需要修改成super()。</p>
+<p>修饰器</p>
+<p>策略模式如果一个类中有一个方法有不同的实现方式，那么构造一个接口并分别实现不同方法的类</p>
+<p>与观察模式不同的是， 由于观察模式依赖于服务类，所以需要产生对服务类中的方法和变量的访问</p>
+<p><strong>ch12：</strong></p>
+<p>正确性和健壮性的概念</p>
+<p>private 中通过RI, checkRep来保证正确性，不需要考虑健壮性。</p>
+<p>错误与异常。‘”错误“是无法修复的错误，异常是可以通过对程序进行修复而继续运行程序。</p>
+<p>异常两类：RuntimeException 和CheckedException,前者是程序猿出现的代码错误，后者是可以修复的外部输入。</p>
+<p>Java 中的 Finally 关键一般与try一起使用，在程序进入try块之后，无论程序是因为异常而中止或其它方式返回终止的，finally块的内容一定会被执行 。<a target="_blank" rel="noopener" href="https://blog.csdn.net/w605283073/article/details/103841999">see</a> </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">finally</span> 无论<span class="keyword">catch</span>执行哪一个，执行后就会执行<span class="keyword">finally</span>.</span><br><span class="line">  <span class="keyword">try</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">  &#125;<span class="keyword">finally</span> </span><br><span class="line">  &#123;</span><br><span class="line">   	<span class="keyword">return</span> <span class="keyword">false</span>; </span><br><span class="line">  &#125;<span class="comment">// 最终会返回false;</span></span><br></pre></td></tr></table></figure>
+
+<p>调用某个类的时候throws IOException, 提示生成这个对象的时候要写异常。checkExcption是无法修复的异常，是需要修改代码的异常不需要抛出(掩耳盗铃)。</p>
+<p>前置后置异常，黑盒等价类划分。</p>
+<p>throws 抛出异常？标记功能？</p>
+<p>编译器检查什么来这</p>
+<p>extends 继承</p>
+<p>断言assert用于开发阶段，目的是为了尽早发现程序员的错误，异常不会直接退出程序，用于提供一种程序错误的处理方式。</p>
+<p>考试考黑盒测试，有效输入和无效输入。</p>
+<p>设置路障：第一部分用于接受用户错误，用异常来处理; CheckRep用Assert来检测那些对属性改变的private。</p>
+<p>SpotBug不考。</p>
+<p><strong>复习</strong>：</p>
+<p>1.Multable 和imultable</p>
+<p>2.表示报漏概念和怎么解决</p>
+<p>3.规约，判断强弱，画图圈</p>
+<p>4.给个代码Snapshot diagram</p>
+<p>5.判相等方法： ==，equals， 相等的对象hashcode要一样，不同的</p>
+<p>行为等价性 multable Stringbuilder 两个”123” 不想等。</p>
+<p>static</p>
+<p>override 和overload</p>
+<p>The <strong>mutator</strong> method in java, <strong>mutator also mean setter</strong>.and any object-oriented programming language, is a method that enables you to change the variables inside the class. Private is the access-level for the variables, meaning the only way to change the variables is by using the mutator methods. </p>
+<p><img src="/.com//../../blog/source/content/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F/image-20210705112817850.png" alt="image-20210705112817850"></p>
+<p>Collection下面有Set Map LIst Queue Stack .</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/yxnchinahlj/archive/2010/09/20/1831615.html">JAVA深复制(深克隆)与浅复制(浅克隆) - 白了少年头 - 博客园 (cnblogs.com)</a></p>
+<p><img src="/.com//../../Typora%E5%9B%BE%E7%89%87/image-20210705121752142.png" alt="image-20210705121752142"></p>
+<p><strong>但是mutator 不一定是void 返回的</strong> </p>
+
+      </div>
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+              <a href="/2021/07/06/GS%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>Prev</span>
+              </a>
+            
+          </div>
+          <div class="post-attach">
+            <span class="post-pubtime">
+              <i class="iconfont icon-updatetime" title="Update time"></i>
+              2021-07-07 12:22:34
+            </span>
+            
+                  <span class="post-tags">
+                    <i class="iconfont icon-tags" title="Tags"></i>
+                    
+                    <span class="span--tag">
+                      <a href="/tags/Java/" title="Java">
+                        <b>#</b> Java
+                      </a>
+                    </span>
+                    
+                  </span>
+              
+          </div>
+          <div class="post-foot-prev">
+            
+          </div>
+        </div>
+      
+    </div>
+    
+  <div id="btn-catalog" class="btn-catalog">
+    <i class="iconfont icon-catalog"></i>
+  </div>
+  <div class="post-catalog hidden" id="catalog">
+    <div class="title">Contents</div>
+    <div class="catalog-content">
+      <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#Ch1"><span class="toc-text">Ch1:</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Ch2"><span class="toc-text">Ch2:</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Ch3"><span class="toc-text">Ch3:</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Ch4"><span class="toc-text">Ch4:</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ch7-%E9%80%89%E6%8B%A9%E9%A2%98%E5%92%8C%E4%BB%A3%E7%A0%81%E4%BF%AE%E6%94%B9%E9%A2%98"><span class="toc-text">ch7 选择题和代码修改题</span></a>
+    </div>
+  </div>
+
+  
+<script src="/js/catalog.js"></script>
+
+
+
+
+    
+      <div class="comments-container">
+        
+
+
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+
+  <div id="vcomments"></div>
+
+  <script>
+    new Valine({
+      el: '#vcomments',
+      appId: 'x0W2lArVWLEo7eOSXuEbEdSp-gzGzoHsz',
+      appKey: 'uyvD42y66uiuqrEqYN1gJMnb',
+      placeholder: 'Welcome!',
+      avatar: 'retro',
+      lang: 'zh-Hans'
+    })
+  </script>
+
+
+
+
+      </div>
+    
+  </div>
+
+
+        <div class="footer">
+  <div class="social">
+    <ul>
+      
+        <li>
+          <a title="github" target="_blank" rel="noopener" href="https://github.com/Rooshy-yang">
+            <i class="iconfont icon-github"></i>
+          </a>
+        </li>
+      
+        <li>
+          <a title="email" href="">
+            <i class="iconfont icon-envelope"></i>
+          </a>
+        </li>
+      
+        <li>
+          <a title="facebook" href="">
+            <i class="iconfont icon-facebooksquare"></i>
+          </a>
+        </li>
+      
+        <li>
+          <a title="twitter" href="">
+            <i class="iconfont icon-twitter"></i>
+          </a>
+        </li>
+      
+        <li>
+          <a title="wechat" href="">
+            <i class="iconfont icon-wechat"></i>
+          </a>
+        </li>
+      
+        <li>
+          <a title="weibo" href="">
+            <i class="iconfont icon-weibo"></i>
+          </a>
+        </li>
+      
+        <li>
+          <a title="rss" href="/atom.xml">
+            <i class="iconfont icon-rss"></i>
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+  
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Copyright © Oranges 2021</a>
+        
+    </div>
+  
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Theme by Oranges | Powered by Hexo</a>
+        
+    </div>
+  
+</div>
+
+      </div>
+
+      <div class="back-to-top hidden">
+  <a href="javascript: void(0)">
+    <i class="iconfont icon-chevronup"></i>
+  </a>
+</div>
+
+
+<script src="/js/backtotop.js"></script>
+
+
+
+      
+  <div class="search-icon" id="search-icon">
+    <a href="javascript: void(0)">
+      <i class="iconfont icon-search"></i>
+    </a>
+  </div>
+
+  <div class="search-overlay hidden">
+    <div class="search-content" tabindex="0">
+      <div class="search-title">
+        <span class="search-icon-input">
+          <a href="javascript: void(0)">
+            <i class="iconfont icon-search"></i>
+          </a>
+        </span>
+        
+          <input type="text" class="search-input" id="search-input" placeholder="搜索..">
+        
+        <span class="search-close-icon" id="search-close-icon">
+          <a href="javascript: void(0)">
+            <i class="iconfont icon-close"></i>
+          </a>
+        </span>
+      </div>
+      <div class="search-result" id="search-result"></div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var inputArea = document.querySelector("#search-input")
+    var searchOverlayArea = document.querySelector(".search-overlay")
+
+    inputArea.onclick = function() {
+      getSearchFile()
+      this.onclick = null
+    }
+
+    inputArea.onkeydown = function() {
+      if(event.keyCode == 13)
+        return false
+    }
+
+    function openOrHideSearchContent() {
+      let isHidden = searchOverlayArea.classList.contains('hidden')
+      if (isHidden) {
+        searchOverlayArea.classList.remove('hidden')
+        document.body.classList.add('hidden')
+        // inputArea.focus()
+      } else {
+        searchOverlayArea.classList.add('hidden')
+        document.body.classList.remove('hidden')
+      }
+    }
+
+    function blurSearchContent(e) {
+      if (e.target === searchOverlayArea) {
+        openOrHideSearchContent()
+      }
+    }
+
+    document.querySelector("#search-icon").addEventListener("click", openOrHideSearchContent, false)
+    document.querySelector("#search-close-icon").addEventListener("click", openOrHideSearchContent, false)
+    searchOverlayArea.addEventListener("click", blurSearchContent, false)
+
+    var searchFunc = function (path, search_id, content_id) {
+      'use strict';
+      var $input = document.getElementById(search_id);
+      var $resultContent = document.getElementById(content_id);
+      $resultContent.innerHTML = "<ul><span class='local-search-empty'>First search, index file loading, please wait...<span></ul>";
+      $.ajax({
+        // 0x01. load xml file
+        url: path,
+        dataType: "xml",
+        success: function (xmlResponse) {
+          // 0x02. parse xml file
+          var datas = $("entry", xmlResponse).map(function () {
+            return {
+              title: $("title", this).text(),
+              content: $("content", this).text(),
+              url: $("url", this).text()
+            };
+          }).get();
+          $resultContent.innerHTML = "";
+
+          $input.addEventListener('input', function () {
+            // 0x03. parse query to keywords list
+            var str = '<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length <= 0) {
+              return;
+            }
+            // 0x04. perform local searching
+            datas.forEach(function (data) {
+              var isMatch = true;
+              var content_index = [];
+              if (!data.title || data.title.trim() === '') {
+                data.title = "Untitled";
+              }
+              var orig_data_title = data.title.trim();
+              var data_title = orig_data_title.toLowerCase();
+              var orig_data_content = data.content.trim().replace(/<[^>]+>/g, "");
+              var data_content = orig_data_content.toLowerCase();
+              var data_url = data.url;
+              var index_title = -1;
+              var index_content = -1;
+              var first_occur = -1;
+              // only match artiles with not empty contents
+              if (data_content !== '') {
+                keywords.forEach(function (keyword, i) {
+                  index_title = data_title.indexOf(keyword);
+                  index_content = data_content.indexOf(keyword);
+
+                  if (index_title < 0 && index_content < 0) {
+                    isMatch = false;
+                  } else {
+                    if (index_content < 0) {
+                      index_content = 0;
+                    }
+                    if (i == 0) {
+                      first_occur = index_content;
+                    }
+                    // content_index.push({index_content:index_content, keyword_len:keyword_len});
+                  }
+                });
+              } else {
+                isMatch = false;
+              }
+              // 0x05. show search results
+              if (isMatch) {
+                str += "<li><a href='" + data_url + "' class='search-result-title'>" + orig_data_title + "</a>";
+                var content = orig_data_content;
+                if (first_occur >= 0) {
+                  // cut out 100 characters
+                  var start = first_occur - 20;
+                  var end = first_occur + 80;
+
+                  if (start < 0) {
+                    start = 0;
+                  }
+
+                  if (start == 0) {
+                    end = 100;
+                  }
+
+                  if (end > content.length) {
+                    end = content.length;
+                  }
+
+                  var match_content = content.substr(start, end);
+
+                  // highlight all keywords
+                  keywords.forEach(function (keyword) {
+                    var regS = new RegExp(keyword, "gi");
+                    match_content = match_content.replace(regS, "<span class=\"search-keyword\">" + keyword + "</span>");
+                  });
+
+                  str += "<p class=\"search-result-abstract\">" + match_content + "...</p>"
+                }
+                str += "</li>";
+              }
+            });
+            str += "</ul>";
+            if (str.indexOf('<li>') === -1) {
+              return $resultContent.innerHTML = "<ul><span class='local-search-empty'>No result<span></ul>";
+            }
+            $resultContent.innerHTML = str;
+          });
+        },
+        error: function(xhr, status, error) {
+          $resultContent.innerHTML = ""
+          if (xhr.status === 404) {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The search.xml file was not found, please refer to：<a href='https://github.com/zchengsite/hexo-theme-oranges#configuration' target='_black'>configuration</a><span></ul>";
+          } else {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The request failed, Try to refresh the page or try again later.<span></ul>";
+          }
+        }
+      });
+      $(document).on('click', '#search-close-icon', function() {
+        $('#search-input').val('');
+        $('#search-result').html('');
+      });
+    }
+
+    var getSearchFile = function() {
+        var path = "/search.xml";
+        searchFunc(path, 'search-input', 'search-result');
+    }
+  </script>
+
+
+
+
+    </div>
+  </body>
+</html>
