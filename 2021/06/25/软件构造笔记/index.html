@@ -160,10 +160,10 @@ MathJax = {
 <h5 id="Ch2"><a href="#Ch2" class="headerlink" title="Ch2:"></a>Ch2:</h5><p>测试的概念和分类.</p>
 <p>等价类划分.需要考虑特殊情况(0 和变量边界(如INT_MIN) . Ch2 </p>
 <p>白盒不会考大题:      测试程序内部运转,确保路径能够正确执行到,无法测试程序功能(黑盒可以).考概念:独立/基本路径测试:对于每一个等价类划分都能有正确的路径跳转.</p>
-<h5 id="Ch3"><a href="#Ch3" class="headerlink" title="Ch3:"></a>Ch3:</h5><h5 id="Ch4"><a href="#Ch4" class="headerlink" title="Ch4:"></a>Ch4:</h5><p>1.对象和基本数据类型的特性表格:<img src="/.com//yrs/Documents/Typora%E5%9B%BE%E7%89%87/image-20210517081602167.png" alt="image-20210517081602167"></p>
+<h5 id="Ch3"><a href="#Ch3" class="headerlink" title="Ch3:"></a>Ch3:</h5><h5 id="Ch4"><a href="#Ch4" class="headerlink" title="Ch4:"></a>Ch4:</h5><p>1.对象和基本数据类型的特性表格:<img src="/Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/image-20210517081602167.png" alt="image-20210517081602167"></p>
 <p>2.静态类型检测和动态类型检测</p>
 <p>3.(必考)区别是否mutable, 如果不是就设计一个mutability,  比如给一个类, 修改类的private final ….r</p>
-<p><img src="/.com//yrs/Documents/Typora%E5%9B%BE%E7%89%87/image-20210517085007348.png" alt="image-20210517085007348"></p>
+<p><img src="/Users/yrs/Documents/Typora%E5%9B%BE%E7%89%87/image-20210517085007348.png" alt="image-20210517085007348"></p>
 <p>不允许改变变量的数据类型,直接return变量的引用肯定不是immultable,改变参数的值也一定不是immultatble</p>
 <p>The following things are essential for creating an <strong>immutable</strong> class:</p>
 <p>[Mutable and Immutable in Java - Javatpoint](<a target="_blank" rel="noopener" href="https://www.javatpoint.com/mutable-and-immutable-in-java#:~:text=Mutable">https://www.javatpoint.com/mutable-and-immutable-in-java#:~:text=Mutable</a> and Immutable in Java Java is an,object-based concept is mutable and immutable in Java.)</p>
@@ -172,10 +172,9 @@ MathJax = {
 <li>All fields should be private so that direct access to the fields is blocked.</li>
 <li>No Setters，即不能有变值器。</li>
 <li>All mutable fields should be as final so that they can not be iterated once initialized.</li>
-<li></li>
 </ul>
 <p>String类型是immutable的,而StringBuilder类型是mutable的。<strong>基本数据型都是immultable</strong> .</p>
-<img src="/.com//yrs/Documents/Typora图片/image-20210524082727915.png" alt="image-20210524082727915" style="zoom:20%;">
+<img src="/Users/yrs/Documents/Typora图片/image-20210524082727915.png" alt="image-20210524082727915" style="zoom:20%;" />
 
 
 
@@ -208,10 +207,10 @@ MathJax = {
 <p>AF : 用于给出抽象空间在表示空间中的表示。</p>
 <p><strong>大题： 类的独立性即：</strong></p>
 <p>不能暴露属性。</p>
-<p>不能return 原引用，因为直接return 是把对象的地址引用给了返回的变量，client 可以直接访问类里面的值。<img src="/.com//yrs/Documents/Typora图片/image-20210524094203899.png" alt="image-20210524094203899" style="zoom:25%;"></p>
+<p>不能return 原引用，因为直接return 是把对象的地址引用给了返回的变量，client 可以直接访问类里面的值。<img src="/Users/yrs/Documents/Typora图片/image-20210524094203899.png" alt="image-20210524094203899" style="zoom:25%;" /></p>
 <p>====</p>
 <p>Rep exposure : presents a reason why the code doesn’t expose the rep:</p>
-<img src="/.com//yrs/Documents/Typora图片/image-20210531082604611.png" alt="image-20210531082604611" style="zoom:25%;">  
+<img src="/Users/yrs/Documents/Typora图片/image-20210531082604611.png" alt="image-20210531082604611" style="zoom:25%;" />  
 
 
 
@@ -242,8 +241,8 @@ MathJax = {
 <p>了解概念</p>
 <p>framework 调用主控端在框架端，Library调用在用户端。</p>
 <p>Q : 擦拭法</p>
-<p><img src="/.com//../../Typora%E5%9B%BE%E7%89%87/image-20210707134403640.png" alt="image-20210707134403640"></p>
-<p>but ： List<Number>. is not a subtype of List<Object>;</Object></Number></p>
+<p><img src="../../../Typora%E5%9B%BE%E7%89%87/image-20210707134403640.png" alt="image-20210707134403640"></p>
+<p>but ： List<Number>. is not a subtype of List<Object>;</p>
 <p><strong>ch10：</strong></p>
 <p>考察：下面那个原则是好的原则.</p>
 <p>Open/close 原则： 复用多的方法建议放在interface中抽象。避免多个ifelseifelse.</p>
@@ -288,16 +287,13 @@ MathJax = {
 <p>static</p>
 <p>override 和overload</p>
 <p>The <strong>mutator</strong> method in java, <strong>mutator also mean setter</strong>.and any object-oriented programming language, is a method that enables you to change the variables inside the class. Private is the access-level for the variables, meaning the only way to change the variables is by using the mutator methods. </p>
-<p><img src="/.com//../../blog/source/content/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F/image-20210705112817850.png" alt="image-20210705112817850"></p>
+<p><img src="../../../blog/source/content/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F/image-20210705112817850.png" alt="image-20210705112817850"></p>
 <p>Collection下面有Set Map LIst Queue Stack .</p>
 <p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/yxnchinahlj/archive/2010/09/20/1831615.html">JAVA深复制(深克隆)与浅复制(浅克隆) - 白了少年头 - 博客园 (cnblogs.com)</a></p>
-<p><img src="/.com//../../Typora%E5%9B%BE%E7%89%87/image-20210705121752142.png" alt="image-20210705121752142"></p>
-<p><strong>但是mutator 不一定是void 返回的</strong> </p>
+<p><img src="../../../Typora%E5%9B%BE%E7%89%87/image-20210705121752142.png" alt="image-20210705121752142"></p>
 <p>Q:</p>
-<p>check异常和uncheck异常。</p>
+<p>check异常和uncheck异常。//</p>
 <p>常见类的方法，哪些类重写了基本方法。</p>
-<p>测试。</p>
-<p>printStackTrace()</p>
 <p>接口的方法定义。</p>
 
       </div>
