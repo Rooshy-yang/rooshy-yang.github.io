@@ -131,6 +131,27 @@
   </entry>
   
   <entry>
+    <title>空指针</title>
+    <link href="http://example.com/2021/05/20/Q/"/>
+    <id>http://example.com/2021/05/20/Q/</id>
+    <published>2021-05-20T11:10:17.000Z</published>
+    <updated>2021-07-26T06:45:08.341Z</updated>
+    
+    <content type="html"><![CDATA[<p>NullPointerException是空指针异常。但是在Java中没有指针，变量作为引用指向地址中的某个值。</p><p>在C++中，声明的指针需要指向一个实例（通过new方法构造），这个指针可以理解为地址。Java中的引用也是要指向一个实例对象（通过new方法构造）的，从这种意义上说，Java中的引用与C++中的指针没有本质的区别，不同的是，处于安全的目的，在Java中不能对引用进行操作，而在C++中可以直接进行指针的运算，例如book++等。</p><p>所以这里的NullPointerException虽然不是真正的空指针异常，但本质上差不多，是因为引用没有指向具体的实例，所以当访问这个引用的方法的时候就会产生这种异常。例如下面的代码：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">String str = <span class="string">&quot;yrs&quot;</span>;</span><br><span class="line">System.out.println(str.length());</span><br></pre></td></tr></table></figure><p>这段代码没有问题，但是如果改成下面的代码：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String str ;</span><br><span class="line">System.out.println(str.length());</span><br></pre></td></tr></table></figure><p>那这种异常通常是如何产生的呢？比较多见的是下面的两种情况：</p><p>1、把调用某个方法的返回值直接赋值给某个引用，然后调用这个引用的方法。在这种情况下，如果返回的值是null，必然会产生NullPointerException异常。例如：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">String userName=request.getParameter(<span class="string">&quot;userName&quot;</span>);</span><br><span class="line"><span class="keyword">if</span>(userName.length()==<span class="number">0</span>)</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">   ......</span><br><span class="line"><span class="comment">//如果request.getParameter(&quot;userName&quot;)的结果为null，则这里就会产生这种异常。</span></span><br></pre></td></tr></table></figure><p>2、在方法体中调用参数的方法。这种情况下，如果调用方法的时候传递进来的值是null，也要产生NullPointerException异常。</p><p>要解决这种异常，只需要检查异常出现在第几行（通常在集成开发环境中会提示用户错误发生在第几行），然后查看调用了哪个对象的方法，然后检查这个对象为什么没有赋值成功即可。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;NullPointerException是空指针异常。但是在Java中没有指针，变量作为引用指向地址中的某个值。&lt;/p&gt;
+&lt;p&gt;在C++中，声明的指针需要指向一个实例（通过new方法构造），这个指针可以理解为地址。Java中的引用也是要指向一个实例对象（通过new方法构造）</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
     <title>JavaNote</title>
     <link href="http://example.com/2021/05/20/JavaNote/"/>
     <id>http://example.com/2021/05/20/JavaNote/</id>

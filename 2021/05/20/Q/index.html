@@ -11,6 +11,11 @@
   
   <title>
     
+      空指针 
+      
+      
+      |
+    
      Hexo
   </title>
 
@@ -101,121 +106,116 @@
 
 
       <div class="flex-container">
-        <div class="container index">
-  <div class="post-list">
-    <!-- 遍历渲染文章 -->
-    
-      <div class="post-item" title="关于Mutable和Imutbale的等价性">
-        <div class="time-m-d">2021-07-07</div>
-        <div class="title">
-          <a href="/2021/07/07/%E5%85%B3%E4%BA%8EMutable%E5%92%8CImutbale%E7%9A%84%E7%AD%89%E4%BB%B7%E6%80%A7/">
-            
-              
-                <span>关于Mutable和Imutbale的等价性</span>
-              
-            
-          </a>
-        </div>
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
+
+<!-- LaTex Display -->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  }
+};
+</script>
+
+
+
+  
+
+  
+
+  
+
+  
+  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
+  <div class="container post-details" id="post-details">
+    <div class="post-content">
+      <div class="post-title">空指针</div>
+      <div class="post-attach">
+        <span class="post-pubtime">
+          <i class="iconfont icon-updatetime" title="Update time"></i>
+          2021-05-20 19:10:17
+        </span>
+        
       </div>
-    
-      <div class="post-item" title="深入理解计算机系统笔记">
-        <div class="time-m-d">2021-06-27</div>
-        <div class="title">
-          <a href="/2021/06/27/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F/">
-            
-              
-                <span>深入理解计算机系统笔记</span>
-              
-            
-          </a>
-        </div>
+      <div class="markdown-body">
+        <p>NullPointerException是空指针异常。但是在Java中没有指针，变量作为引用指向地址中的某个值。</p>
+<p>在C++中，声明的指针需要指向一个实例（通过new方法构造），这个指针可以理解为地址。Java中的引用也是要指向一个实例对象（通过new方法构造）的，从这种意义上说，Java中的引用与C++中的指针没有本质的区别，不同的是，处于安全的目的，在Java中不能对引用进行操作，而在C++中可以直接进行指针的运算，例如book++等。</p>
+<p>所以这里的NullPointerException虽然不是真正的空指针异常，但本质上差不多，是因为引用没有指向具体的实例，所以当访问这个引用的方法的时候就会产生这种异常。例如下面的代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">String str = <span class="string">&quot;yrs&quot;</span>;</span><br><span class="line">System.out.println(str.length());</span><br></pre></td></tr></table></figure>
+
+<p>这段代码没有问题，但是如果改成下面的代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String str ;</span><br><span class="line">System.out.println(str.length());</span><br></pre></td></tr></table></figure>
+
+<p>那这种异常通常是如何产生的呢？比较多见的是下面的两种情况：</p>
+<p>1、把调用某个方法的返回值直接赋值给某个引用，然后调用这个引用的方法。在这种情况下，如果返回的值是null，必然会产生NullPointerException异常。例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">String userName=request.getParameter(<span class="string">&quot;userName&quot;</span>);</span><br><span class="line"><span class="keyword">if</span>(userName.length()==<span class="number">0</span>)</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">   ......</span><br><span class="line"><span class="comment">//如果request.getParameter(&quot;userName&quot;)的结果为null，则这里就会产生这种异常。</span></span><br></pre></td></tr></table></figure>
+
+<p>2、在方法体中调用参数的方法。这种情况下，如果调用方法的时候传递进来的值是null，也要产生NullPointerException异常。</p>
+<p>要解决这种异常，只需要检查异常出现在第几行（通常在集成开发环境中会提示用户错误发生在第几行），然后查看调用了哪个对象的方法，然后检查这个对象为什么没有赋值成功即可。</p>
+
       </div>
-    
-      <div class="post-item" title="软件构造笔记">
-        <div class="time-m-d">2021-06-25</div>
-        <div class="title">
-          <a href="/2021/06/25/%E8%BD%AF%E4%BB%B6%E6%9E%84%E9%80%A0%E7%AC%94%E8%AE%B0/">
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
             
-              
-                <span>软件构造笔记</span>
-              
+              <a href="/2021/05/20/JavaNote/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>Prev</span>
+              </a>
             
-          </a>
+          </div>
+          <div class="post-attach">
+            <span class="post-pubtime">
+              <i class="iconfont icon-updatetime" title="Update time"></i>
+              2021-05-20 19:10:17
+            </span>
+            
+          </div>
+          <div class="post-foot-prev">
+            
+              <a href="/2021/05/30/Cartographer/" target="_self">
+                <span>Next</span>
+                <i class="iconfont icon-chevronright"></i>
+              </a>
+            
+          </div>
         </div>
-      </div>
+      
+    </div>
     
-      <div class="post-item" title="关于Override和Overload的问题">
-        <div class="time-m-d">2021-06-04</div>
-        <div class="title">
-          <a href="/2021/06/04/%E5%85%B3%E4%BA%8EOverride%E5%92%8COverload%E7%9A%84%E9%97%AE%E9%A2%98/">
-            
-              
-                <span>关于Override和Overload的问题</span>
-              
-            
-          </a>
-        </div>
-      </div>
+
     
-      <div class="post-item" title="Cartographer">
-        <div class="time-m-d">2021-05-30</div>
-        <div class="title">
-          <a href="/2021/05/30/Cartographer/">
-            
-              
-                <span>Cartographer</span>
-              
-            
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="空指针">
-        <div class="time-m-d">2021-05-20</div>
-        <div class="title">
-          <a href="/2021/05/20/Q/">
-            
-              
-                <span>空指针</span>
-              
-            
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="JavaNote">
-        <div class="time-m-d">2021-05-20</div>
-        <div class="title">
-          <a href="/2021/05/20/JavaNote/">
-            
-              
-                <span>JavaNote</span>
-              
-            
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="Teach Me How to hexo">
-        <div class="time-m-d">2021-05-17</div>
-        <div class="title">
-          <a href="/2021/05/17/hello-world/">
-            
-              
-                <span>Teach Me How to hexo</span>
-              
-            
-          </a>
-        </div>
+      <div class="comments-container">
+        
+
+
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+
+  <div id="vcomments"></div>
+
+  <script>
+    new Valine({
+      el: '#vcomments',
+      appId: 'x0W2lArVWLEo7eOSXuEbEdSp-gzGzoHsz',
+      appKey: 'uyvD42y66uiuqrEqYN1gJMnb',
+      placeholder: 'Welcome!',
+      avatar: 'retro',
+      lang: 'zh-Hans'
+    })
+  </script>
+
+
+
+
       </div>
     
   </div>
-  <nav class="post-navigation">
-    
-    <span class="page-num">1 / 1</span>
-    
-  </nav>
-</div>
+
 
         <div class="footer">
   <div class="social">
